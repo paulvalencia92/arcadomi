@@ -1,0 +1,40 @@
+<?php
+
+use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+//Auth::routes();
+
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+//Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'auth'], function ($router) {
+//    Route::post('login', 'Auth\JwtController@login');
+//    Route::post('logout', 'Auth\JwtController@logout');
+//    Route::post('register', 'Auth\JwtController@register');
+//    Route::post('refresh', 'Auth\JwtController@refresh');
+//    Route::post('me', 'Auth\JwtController@me');
+//});
+
+Route::group(['middleware' => 'auth:api'], function () {
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+});
+
+Route::post('login', [AuthController::class, 'login']);
+//Route::post('login', 'Auth\PassportController@login');
+//Route::post('register', 'Auth\JwtController@register');

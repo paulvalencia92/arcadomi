@@ -1,0 +1,238 @@
+[
+  {
+    "title": "Dashboard",
+    "name": "sidebar.dashboard",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dashboard.home"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-3-line"
+  },
+  {
+    "title": "App",
+    "name": "sidebar.app",
+    "is_heading": true,
+    "is_active": false,
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": ""
+  },
+
+  {
+    "title": "User",
+    "name": "sidebar.user",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-user-line",
+    "children": [
+      {
+        "title": "User Profile",
+        "name": "sidebar.userProfile",
+        "is_active": false,
+        "link": {
+          "name": "user.profile"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-profile-line"
+      },
+      {
+        "title": "User Add",
+        "name": "sidebar.userAdd",
+        "is_active": false,
+        "link": {
+          "name": "user.add"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-user-add-line"
+      },
+      {
+        "title": "User List",
+        "name": "sidebar.userList",
+        "is_active": false,
+        "link": {
+          "name": "user.list"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-list-line"
+      }
+    ]
+  },
+  {
+    "title": "Authentication",
+    "name": "sidebar.authentication",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-pages-line",
+    "children": [
+      {
+        "title": "Login",
+        "name": "sidebar.login",
+        "is_active": false,
+        "link": {
+          "name": "auth1.sign-in1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-login-box-line"
+      },
+      {
+        "title": "Register",
+        "name": "sidebar.register",
+        "is_active": false,
+        "link": {
+          "name": "auth1.sign-up1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-login-circle-line"
+      },
+      {
+        "title": "Recover Password",
+        "name": "sidebar.recoverPassword",
+        "is_active": false,
+        "link": {
+          "name": "auth1.password-reset1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-record-mail-line"
+      },
+      {
+        "title": "Confirm Mail",
+        "name": "sidebar.confirmMail",
+        "is_active": false,
+        "link": {
+          "name": "auth1.confirm-mail1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-code-line"
+      },
+      {
+        "title": "Lock Screen",
+        "name": "sidebar.lockScreen",
+        "is_active": false,
+        "link": {
+          "name": "auth1.lock-screen1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-lock-line"
+      }
+    ]
+  },
+  {
+    "title": "Menu Level",
+    "name": "sidebar.menuLevel",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-record-circle-line",
+    "children": [
+      {
+        "title": "Menu 1",
+        "name": "sidebar.menuOne",
+        "is_active": false,
+        "link": {
+          "name": ""
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-record-circle-line"
+      },
+      {
+        "title": "Menu 2",
+        "name": "sidebar.menuTwo",
+        "is_active": false,
+        "link": {
+          "name": ""
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-record-circle-line"
+      },
+      {
+        "title": "Sub Menu",
+        "name": "sidebar.submenu",
+        "is_active": false,
+        "link": {
+          "name": ""
+        },
+        "class_name": "iq-submenu-data",
+        "is_icon_class": true,
+        "icon": "ri-record-circle-line",
+        "children": [
+          {
+            "title": "Sub-menu 1",
+            "name": "sidebar.submenuOne",
+            "is_active": false,
+            "link": {
+              "name": ""
+            },
+            "class_name": "",
+            "is_icon_class": true,
+            "icon": "ri-record-circle-line"
+          },
+          {
+            "title": "Sub-menu 2",
+            "name": "sidebar.submenuTwo",
+            "is_active": false,
+            "link": {
+              "name": ""
+            },
+            "class_name": "",
+            "is_icon_class": true,
+            "icon": "ri-record-circle-line"
+          },
+          {
+            "title": "Sub-menu 3",
+            "name": "sidebar.submenuThree",
+            "is_active": false,
+            "link": {
+              "name": ""
+            },
+            "class_name": "",
+            "is_icon_class": true,
+            "icon": "ri-record-circle-line"
+          }
+        ]
+      },
+      {
+        "title": "Menu 3",
+        "name": "sidebar.menuThree",
+        "is_active": false,
+        "link": {
+          "name": ""
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-record-circle-line"
+      },
+      {
+        "title": "Menu 4",
+        "name": "sidebar.menuFour",
+        "is_active": false,
+        "link": {
+          "name": ""
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-record-circle-line"
+      }
+    ]
+  }
+]
