@@ -14,7 +14,8 @@
       <ValidationProvider :vid="`${formType}-email`" name="Email" rules="required|email" v-slot="{ errors }">
         <div class="form-group">
           <label :for="`${formType}-email`">Email address</label>
-          <input type="email" v-model="user.email" :class="'form-control mb-0' +(errors.length > 0 ? ' is-invalid' : '')"
+          <input type="email" v-model="user.email"
+                 :class="'form-control mb-0' +(errors.length > 0 ? ' is-invalid' : '')"
                  :id="`${formType}-email`" aria-describedby="emailHelp" placeholder="Enter email">
           <div class="invalid-feedback">
             <span>{{ errors[0] }}</span>
@@ -24,7 +25,8 @@
       <ValidationProvider :vid="`${formType}-password`" name="Password" rules="required" v-slot="{ errors }">
         <div class="form-group">
           <label :for="`${formType}-password`">Password</label>
-          <input type="password" v-model="user.password" :class="'form-control mb-0' +(errors.length > 0 ? ' is-invalid' : '')"
+          <input type="password" v-model="user.password"
+                 :class="'form-control mb-0' +(errors.length > 0 ? ' is-invalid' : '')"
                  :id="`${formType}-password`" placeholder="Password">
           <div class="invalid-feedback">
             <span>{{ errors[0] }}</span>
@@ -48,26 +50,22 @@
                 Sign in
               </router-link>
           </span>
-          <social-login-form></social-login-form>
+        <social-login-form></social-login-form>
       </div>
     </form>
   </ValidationObserver>
 </template>
 
 <script>
-import auth from '../../../../services/auth'
-import firebase from 'firebase'
 import SocialLoginForm from './SocialLoginForm'
-import { mapGetters } from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'SignUp1Form',
-  components: { SocialLoginForm },
+  components: {SocialLoginForm},
   props: ['formType'],
   computed: {
-    ...mapGetters({
-      users: 'Setting/usersState'
-    })
+    ...mapGetters({users: 'Setting/usersState'})
   },
   data: () => ({
     user: {
@@ -76,42 +74,20 @@ export default {
     }
   }),
   methods: {
-    onSubmit () {
-      if (this.formType === 'passport') {
-        this.passportRegister()
-      } else if (this.formType === 'jwt') {
-        this.jwtRegister()
-      } else if (this.formType === 'firebase') {
-        this.firebaseRegister()
-      }
+    onSubmit() {
+      this.passportRegister()
     },
-    jwtRegister () {
-      // this.$store.dispatch('Setting/addUserAction', this.user)
-      // this.$router.replace('/auth/sign-in1')
-        auth.jwtRegister(this.user).then(response => {
-            if (response.status) {
-                this.$router.push('/auth/sign-in1')
-            } else if (response.data.errors.length > 0) {
-                this.$refs.form.setErrors(response.data.errors)
-            }
-        }).finally(() => { this.loading = false })
+    passportRegister() {
+      // auth.register(this.user).then(response => {
+      //   if (response.status) {
+      //     this.$router.push('/auth/sign-in1')
+      //   } else if (response.data.errors.length > 0) {
+      //     this.$refs.form.setErrors(response.data.errors)
+      //   }
+      // }).finally(() => {
+      //   this.loading = false
+      // })
     },
-    passportRegister () {
-      auth.register(this.user).then(response => {
-        if (response.status) {
-          this.$router.push('/auth/sign-in1')
-        } else if (response.data.errors.length > 0) {
-          this.$refs.form.setErrors(response.data.errors)
-        }
-      }).finally(() => { this.loading = false })
-    },
-    firebaseRegister () {
-      firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password).then((user) => {
-        this.$router.replace('/auth/sign-in1')
-        // eslint-disable-next-line handle-callback-err
-      }).catch((err) => {
-      })
-    }
   }
 }
 </script>

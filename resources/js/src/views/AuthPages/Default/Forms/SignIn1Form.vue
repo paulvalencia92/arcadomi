@@ -37,8 +37,8 @@
       </ValidationProvider>
       <div class="d-inline-block w-100">
         <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
-          <input type="checkbox" class="custom-control-input" :id="formType"/>
-          <label class="custom-control-label" :for="formType">Remember Me</label>
+          <input type="checkbox" class="custom-control-input" id="rember_me"/>
+          <label class="custom-control-label" for="rember_me">Remember Me</label>
         </div>
         <button type="submit" class="btn btn-primary float-right">Sign in</button>
       </div>
@@ -59,45 +59,27 @@
 </template>
 
 <script>
-import auth from "../../../../services/auth";
 import SocialLoginForm from "./SocialLoginForm";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "SignIn1Form",
   components: {SocialLoginForm},
-  props: ["formType", "email", "password"],
   data: () => ({
     user: {
-      email: "",
-      password: ""
+      email: "admin@arcadomi.com",
+      password: "password"
     }
   }),
-  mounted() {
-    this.user.email = this.$props.email;
-    this.user.password = this.$props.password;
-  },
   computed: {
     ...mapGetters({stateUsers: "Setting/usersState"})
   },
   methods: {
+    ...mapActions('Auth', ['login']),
     onSubmit() {
-      this.passportLogin();
-    },
-    passportLogin() {
-      auth.login(this.user)
-          .then(response => {
-            if (response.status) {
-              localStorage.setItem("user", JSON.stringify(response.data.user));
-              localStorage.setItem("access_token", response.data.access_token);
-              this.$router.push({name: "dashboard.home"});
-            } else if (response.data.errors.length > 0) {
-              this.$refs.form.setErrors(response.data.errors);
-            }
-          })
-          .finally(() => {
-            this.loading = false;
-          });
+      this.login(this.user).then(response => {
+        this.$router.push({name: "dashboard.home"});
+      })
     },
   }
 };

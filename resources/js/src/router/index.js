@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from './../store/index'
 
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
@@ -45,7 +46,7 @@ const authChildRoutes = (prop) => [
     {
         path: 'sign-in1',
         name: prop + '.sign-in1',
-        meta: {auth: true},
+        meta: {auth: false},
         component: SignIn1
     },
     {
@@ -127,8 +128,6 @@ const userChildRoute = (prop) => [
 ]
 
 
-
-
 const routes = [
     {
         path: '/',
@@ -181,17 +180,26 @@ const router = new VueRouter({
 })
 router.beforeEach((to, from, next) => {
     const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
-    if (publicPages.includes(to.path)) {
-        localStorage.removeItem('user')
-        localStorage.removeItem('access_token')
-    }
+    // if (publicPages.includes(to.path)) {
+    //     localStorage.removeItem('user')
+    //     localStorage.removeItem('access_token')
+    // }
     const authRequired = !publicPages.includes(to.path)
-    const loggedIn = localStorage.getItem('user')
+    const loggedIn = store.state.Auth.user
+
+
     if (to.meta.auth) {
         if (authRequired && loggedIn === null) {
             return next('/auth/sign-in1')
         } else if (to.name === 'dashboard' || to.name === 'mini.dashboard') {
             return next('/home')
+        }
+    }
+    else {
+        if (loggedIn) {
+            return next('/home')
+        }else {
+            next()
         }
     }
     next()

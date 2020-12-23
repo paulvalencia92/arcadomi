@@ -37,9 +37,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.className)
-    // console.log(this.idName)
-    // console.log(this.accordianName)
   },
   methods: {
     activeLink (item) {

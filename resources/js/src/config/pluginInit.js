@@ -37,29 +37,23 @@ export const core = {
         body.classList.remove('top-tab-horizontal');
         switch (Route.currentRoute.meta.layout) {
             case 'mini-sidebar-right-fix':
-                console.log('mini-sidebar-right-fix')
                 body.classList.add('sidebar-main-active')
                 body.classList.add('right-column-fixed')
                 break
             case 'nav-with-menu':
-                console.log('nav-with-menu')
                 body.classList.add('iq-page-menu-horizontal')
                 break
             case 'nav-bottom-menu':
-                console.log('nav-bottom-menu')
                 body.classList.add('top-tab-horizontal')
                 break
             case 'two-sidebar':
-                console.log('two-sidebar')
                 body.classList.add('two-sidebar')
                 break
             case 'icon-with-text':
-                console.log('icon-with-text')
                 body.classList.add('icon-with-text')
                 sidebar[0].classList.add('sidebar-dark-blue')
                 break
             default:
-                console.log('default')
                 break
         }
     },

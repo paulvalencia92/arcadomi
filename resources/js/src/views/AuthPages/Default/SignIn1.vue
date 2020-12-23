@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-0">Sign in</h1>
     <p>Enter your email address and password to access admin panel.</p>
-    <sign-in1-form formType="passport" email="admin@vito.com" password="admin123"></sign-in1-form>
+    <sign-in1-form></sign-in1-form>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   components: {SignIn1Form},
   data: () => ({}),
   mounted() {
-    const loggedIn = localStorage.getItem('access_token')
+    const loggedIn = localStorage.getItem('access_token');
     if (loggedIn !== undefined && loggedIn !== null) {
       this.$router.push({name: 'dashboard.home-1'})
     }

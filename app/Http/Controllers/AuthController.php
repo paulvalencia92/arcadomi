@@ -27,7 +27,6 @@ class AuthController extends Controller
 //            $abilities = $user->getAbilities()->pluck('name')->push('404')->push('403')->push('500')->push('dashboard');
             $token = $user->createToken('Personal Access Client');
 
-
             return response()->json([
                 'user' => $user,
 //                'role' => $role,
@@ -35,11 +34,20 @@ class AuthController extends Controller
                 'access_token' => $token->accessToken,
             ]);
 
-
         } catch (ValidationException $e) {
             return response()->json($e->validator->errors());
         }
 
+    }
+
+
+    public function logout()
+    {
+        auth()->user()->tokens->each(function ($token, $key) {
+            $token->delete();
+        });
+
+        return response()->json('Logged out successfully', 200);
 
     }
 }

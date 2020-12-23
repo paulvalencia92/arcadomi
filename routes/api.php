@@ -33,8 +33,10 @@ Route::group(['middleware' => 'auth:api'], function () {
         return $request->user();
     });
 
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 });
 
-Route::post('login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 //Route::post('login', 'Auth\PassportController@login');
 //Route::post('register', 'Auth\JwtController@register');

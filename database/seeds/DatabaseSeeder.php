@@ -11,12 +11,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->truncate();
         Artisan::call('passport:install --force');
-        // $this->call(UsersTableSeeder::class);
-        \App\User::create([
-            'name' => 'admin',
-            'email' => 'admin@vito.com',
-            'password' => \Illuminate\Support\Facades\Hash::make('admin123')
+        $this->call(UserSeeder::class);
+
+    }
+
+
+    public function truncate()
+    {
+        $this->truncateTables([
+            'bouncer_abilities',
+            'bouncer_assigned_roles',
+            'bouncer_permissions',
+            'bouncer_roles',
+            'failed_jobs',
+            'oauth_access_tokens',
+            'oauth_auth_codes',
+            'oauth_clients',
+            'oauth_personal_access_clients',
+            'oauth_refresh_tokens',
+            'password_resets',
+            'users',
         ]);
+    }
+
+
+    protected function truncateTables(array $tables)
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+
+        foreach ($tables as $table) {
+            DB::table($table)->truncate();
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
     }
 }
