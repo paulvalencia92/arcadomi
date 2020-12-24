@@ -4,22 +4,28 @@ import VuexPersistence from "vuex-persist";
 import Setting from './Setting/index'
 import Ecommerce from './Ecommerce/index'
 import Auth from './Auth/index'
+import User from './User/index'
+import axios from "axios";
+
 
 const vuexLocal = new VuexPersistence({
     store: window.localStorage,
-    modules: ['Setting','Ecommerce','Auth'],
+    modules: ['Setting', 'Ecommerce', 'Auth', 'User'],
 });
 
 
 Vue.use(Vuex)
 
-const debug = process.env.NODE_ENV !== 'production'
+const debug = process.env.NODE_ENV !== 'production';
 
-export default new Vuex.Store({
+let store;
+
+export default store = new Vuex.Store({
     modules: {
         Setting,
         Ecommerce,
-        Auth
+        Auth,
+        User
     },
     state: {},
     mutations: {},
@@ -28,3 +34,6 @@ export default new Vuex.Store({
     strict: debug,
     plugins: [vuexLocal.plugin]
 })
+
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.Auth.access_token;
+

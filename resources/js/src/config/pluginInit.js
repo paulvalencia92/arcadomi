@@ -292,7 +292,7 @@ export const core = {
         if (type !== null) {
             switch (type) {
                 case 'success':
-                    Snackbar.show({text: data, backgroundColor: '#323232'})
+                    Snackbar.show({text: data, backgroundColor: '#4caf50'})
                     break
                 case 'error':
                     Snackbar.show({text: data, backgroundColor: '#b21f2d', actionTextColor: '#ffffff'})

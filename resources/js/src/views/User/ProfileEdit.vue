@@ -398,10 +398,10 @@ export default {
     onSubmit() {
       this.user.name = this.user.fname + " " + this.user.lname;
 
-      // Update user
-      this.$firestoreRefs.user.update(this.user).then(() => {
-        core.showSnackbar("success", "User has been added successfully.");
-      });
+      // // Update user
+      // this.$firestoreRefs.user.update(this.user).then(() => {
+      //
+      // });
 
       this.$router.replace("/user/user-list");
     },

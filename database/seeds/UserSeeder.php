@@ -14,7 +14,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'admin',
+            'username' => 'paulvalencia92',
+            'first_name' => 'Paul',
+            'last_name' => 'Valencia',
+            'name' => 'Paul Valencia',
             'email' => 'admin@arcadomi.com',
             'password' => Hash::make('password')
         ]);

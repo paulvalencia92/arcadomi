@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../index";
 
 export default {
     namespaced: true,
@@ -24,7 +25,6 @@ export default {
                 password: userData.password
             }
             const response = await axios.post('/api/login', data).then(response => {
-
                 if (response.status) {
                     context.commit('SET_USER_DATA', response.data);
                     return Promise.resolve('success');
