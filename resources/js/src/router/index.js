@@ -58,21 +58,21 @@ const authChildRoutes = (prop) => [
     {
         path: 'password-reset1',
         name: prop + '.password-reset1',
-        meta: {auth: true},
+        meta: {auth: false},
         component: RecoverPassword1
     },
-    {
-        path: 'lock-screen1',
-        name: prop + '.lock-screen1',
-        meta: {auth: true},
-        component: LockScreen1
-    },
-    {
-        path: 'confirm-mail1',
-        name: prop + '.confirm-mail1',
-        meta: {auth: true},
-        component: ConfirmMail1
-    }
+//     {
+//         path: 'lock-screen1',
+//         name: prop + '.lock-screen1',
+//         meta: {auth: true},
+//         component: LockScreen1
+//     },
+//     {
+//         path: 'confirm-mail1',
+//         name: prop + '.confirm-mail1',
+//         meta: {auth: true},
+//         component: ConfirmMail1
+//     }
 ]
 
 const defaultlayout = (prop) => [

@@ -9,7 +9,6 @@
 
 import SignUp1Form from './Forms/SignUp1Form'
 import auth0 from 'auth0-js'
-import constant from '../../../config/constant'
 
 export default {
   name: 'SignUp1',
@@ -17,7 +16,7 @@ export default {
   data: () => ({}),
   methods: {
     loginOAuth0() {
-      new auth0.WebAuth(constant.auth0Config).authorize()
+
     }
   }
 }

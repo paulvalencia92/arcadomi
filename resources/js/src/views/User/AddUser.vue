@@ -5,7 +5,8 @@
         <b-row>
           <b-col lg="3">
             <iq-card>
-              <template v-slot:headerTitle>
+              <template
+                  headerTitle>
                 <h4 class="card-title">Add New User</h4>
               </template>
               <template v-slot:body>
@@ -83,8 +84,8 @@
                           v-model="user.fname"
                           type="text"
                           placeholder="First Name"
-                          :class="(errors.length > 0 ? ' is-invalid' : '')"
-                        ></b-form-input>
+                          :class="(errors.length > 0 ? ' is-invalid' : '')">
+                        </b-form-input>
                         <div class="invalid-feedback">
                           <span>{{ errors[0] }}</span>
                         </div>
@@ -96,8 +97,8 @@
                           v-model="user.lname"
                           type="text"
                           placeholder="Last Name"
-                          :class="(errors.length > 0 ? ' is-invalid' : '')"
-                        ></b-form-input>
+                          :class="(errors.length > 0 ? ' is-invalid' : '')">
+                        </b-form-input>
                         <div class="invalid-feedback">
                           <span>{{ errors[0] }}</span>
                         </div>
@@ -135,8 +136,7 @@
                         v-model="user.country"
                         plain
                         :options="countries"
-                        id="selectcountry"
-                      >
+                        id="selectcountry">
                         <template v-slot:first>
                           <b-form-select-option :value="null">Select Country</b-form-select-option>
                         </template>
@@ -232,8 +232,7 @@
                         vid="repeat_password"
                         name="Repeat Password"
                         rules="required"
-                        v-slot="{ errors }"
-                      >
+                        v-slot="{ errors }">
                         <b-form-input
                           v-model="user.repeat_password"
                           type="password"
@@ -263,7 +262,6 @@
 </template>
 <script>
 import { core } from "../../config/pluginInit";
-import { db } from "../../config/firebase";
 
 export default {
   name: "AddUser",
@@ -314,7 +312,6 @@ export default {
   methods: {
     onSubmit() {
       this.user.name = this.fullName;
-      db.collection("users").add(this.user);
       core.showSnackbar("success", "User has been updated successfully.");
       this.$router.replace("/user/user-list");
     },

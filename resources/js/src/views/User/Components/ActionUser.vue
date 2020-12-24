@@ -24,7 +24,6 @@
 
 <script>
 import Vue from "vue";
-import { db } from "../../../config/firebase";
 import { core } from "../../../config/pluginInit";
 
 export default Vue.extend({
@@ -35,9 +34,6 @@ export default Vue.extend({
       },
       methods: {
         removeData(id) {
-          db.collection("users")
-            .doc(id)
-            .delete();
           core.showSnackbar("success", "User has been remove successfully.");
         }
       }

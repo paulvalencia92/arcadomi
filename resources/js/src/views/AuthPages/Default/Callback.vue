@@ -3,11 +3,9 @@
 </template>
 <script>
 import auth0 from 'auth0-js'
-import constant from '../../../config/constant'
 export default {
   name: 'Callback',
   mounted () {
-    let autho = new auth0.WebAuth(constant.auth0Config)
     let token = this.$route.hash
     autho.parseHash({ hash: token }, function (err, authResult) {
       if (err) {
