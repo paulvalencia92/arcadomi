@@ -18,10 +18,10 @@ class CreateUserProfilesTable extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string('address')->nullable();
+            $table->string('address');
+            $table->string('city');
             $table->string('address_two')->nullable();
             $table->string('company')->nullable();
-            $table->string('city')->nullable();
             $table->string('movil_number')->nullable();
             $table->timestamps();
         });

@@ -105,13 +105,19 @@
                       </ValidationProvider>
                     </b-form-group>
                     <b-form-group class="col-md-6" label="Street Address 1:" label-for="add1">
+                      <ValidationProvider name="Address" rules="required" v-slot="{ errors }">
                       <b-form-input
                           v-model="user.address"
                           type="text"
                           name="add1"
                           id="add1"
                           placeholder="Street Address 1"
+                          :class="(errors.length > 0 ? ' is-invalid' : '')"
                       ></b-form-input>
+                        <div class="invalid-feedback">
+                          <span>{{ errors[0] }}</span>
+                        </div>
+                      </ValidationProvider>
                     </b-form-group>
                     <b-form-group class="col-md-6" label="Street Address 2:" label-for="add2">
                       <b-form-input
@@ -132,13 +138,16 @@
                       ></b-form-input>
                     </b-form-group>
                     <b-form-group class="col-md-6" label="Town/City:" label-for="city">
+                      <ValidationProvider name="Ciudad" rules="required" v-slot="{ errors }">
                       <b-form-input
                           v-model="user.city"
                           type="text"
                           name="city"
                           id="city"
                           placeholder="Town/City"
+                          :class="(errors.length > 0 ? ' is-invalid' : '')"
                       ></b-form-input>
+                      </ValidationProvider>
                     </b-form-group>
                   </b-row>
                   <hr/>

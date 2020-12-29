@@ -17,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::with('profile')->get();
+        return response()->json($user, 200);
     }
 
 
