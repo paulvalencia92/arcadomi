@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->truncate();
         Artisan::call('passport:install --force');
-        $this->call(UserSeeder::class);
+        $this->call([BouncerSeeder::class, UserSeeder::class, TypeUnitSeeder::class]);
 
     }
 
@@ -26,13 +26,15 @@ class DatabaseSeeder extends Seeder
             'bouncer_permissions',
             'bouncer_roles',
             'failed_jobs',
-            'oauth_access_tokens',
+//            'oauth_access_tokens',
             'oauth_auth_codes',
-            'oauth_clients',
-            'oauth_personal_access_clients',
+//            'oauth_clients',
+//            'oauth_personal_access_clients',
             'oauth_refresh_tokens',
             'password_resets',
-            'users',
+//            'users',
+            'blocks',
+            'type_units'
         ]);
     }
 

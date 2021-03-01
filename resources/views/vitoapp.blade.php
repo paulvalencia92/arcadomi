@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Vito - Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <title>ArcaDomi</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <!-- Styles -->
     {{--<link rel="stylesheet" href="{{ asset(mix('css/main.css')) }}">--}}

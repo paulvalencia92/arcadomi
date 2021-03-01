@@ -11,6 +11,7 @@ import AlgoliaComponents from 'vue-instantsearch'
 import i18n from './i18n'
 import './directives'
 import FileManager from 'laravel-file-manager'
+import './Helpers/index'
 
 global.Raphael = Raphael
 

@@ -1,14 +1,40 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\{AuthController, RolesController};
+use Illuminate\Support\Facades\Route;
 
-//Auth::routes();
+Auth::routes();
+
 
 Route::group(['middleware' => 'auth:api'], function () {
 
+    Route::get('/roles', [RolesController::class, 'index']);
+
+
+    /**=================================
+     *    User
+     *================================**/
     Route::apiResource('/users', 'UserController');
+
+    /**=================================
+     *    Block
+     *================================**/
+    Route::apiResource('/blocks', 'BlockController');
+
+    /**=================================
+     *    Type Units
+     *================================**/
+    Route::apiResource('/type-units', 'TypeUnitController');
+
+
+    /**=================================
+     *    Units
+     *================================**/
+    Route::apiResource('/units', 'UnitController');
+
+    /**=================================
+     *    Auth
+     *================================**/
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 });

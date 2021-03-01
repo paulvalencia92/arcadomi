@@ -17,11 +17,11 @@
     "inbox": "Inbox",
     "emailCompose": "Email Compose",
     "calendar": "Calendar",
-    "user": "User",
-    "userProfile": "User Profile",
-    "userEdit": "User Edit",
-    "userAdd": "User Add",
-    "userList": "User List",
+    "user": "Usuario",
+    "userProfile": "Perfil del usuario",
+    "userEdit": "Editar usuario",
+    "userAdd": "Registrar usuario",
+    "userList": "Lista de usuarios",
     "components": "Components",
     "uiElements": "UI Elements",
     "color": "Color",
@@ -89,8 +89,8 @@
     "datepicker": "Datepicker",
     "select": "Select",
     "draggable": "Draggable",
-     "MenuDesign": "Menu Design",
-    "horizontalMenu":"Horizontal Menu",
+    "MenuDesign": "Menu Design",
+    "horizontalMenu": "Horizontal Menu",
     "horizontalTopMenu": "Horizontal Top Menu",
     "twoSlider": "Two Slider",
     "verticalBlockMenu": "Vertical Block Menu",
@@ -137,29 +137,29 @@
     "card2": "Credited From Accounts",
     "card3": "AVG Employee Costs",
     "card4": "Average payment delay",
-    "invoice" : "invoice",
+    "invoice": "invoice",
     "invoiceState": "Invoice Stats",
     "openInvoice": "Open Invoices",
     "monthlyInvoice": "Monthly Invoices",
     "exchangeRates": "Exchange Rates",
-    "paymentHistory" : "Payment History",
-    "lastCosts" : "Last Costs",
-    "efficiency" : "Efficiency"
+    "paymentHistory": "Payment History",
+    "lastCosts": "Last Costs",
+    "efficiency": "Efficiency"
   },
   "rightSide": {
-    "customerDistribution" : "Customer Distribution",
-    "projectStatistic" : "Project Statistic",
-    "countries" : "Countries"
+    "customerDistribution": "Customer Distribution",
+    "projectStatistic": "Project Statistic",
+    "countries": "Countries"
   },
   "dropdown": {
-    "view" : "View",
+    "view": "View",
     "delete": "Delete",
-    "edit" : "Edit",
-    "print" : "Print",
+    "edit": "Edit",
+    "print": "Print",
     "download": "Download",
-    "unfollow" : "Unfollow",
-    "follow" : "Follow",
-    "block" : "Block"
+    "unfollow": "Unfollow",
+    "follow": "Follow",
+    "block": "Block"
   },
   "customizer": {
     "colorCustomizer": "Theme Customizer",
@@ -167,9 +167,17 @@
     "colorMode": "Color Mode",
     "sidebar": "Sidebar",
     "sidebarMini": "Sidebar Mini",
-    "routeAnimation" : "Route Animation",
+    "routeAnimation": "Route Animation",
     "rtlMode": "RTL Mode",
     "rtl": "RTL",
     "reset": "Reset"
+  },
+  "block": {
+    "title": "Bloques",
+    "blockAdd": "Crear bloque"
+  },
+  "units": {
+    "title": "Unidades",
+    "add": "Crear unidades"
   }
 }

@@ -26,9 +26,15 @@ const BlankPage = () => import('../views/Pages/BlankPage')
 
 /* User View */
 const Profile = () => import('../views/User/Profile')
-const ProfileEdit = () => import('../views/User/ProfileEdit')
-const AddUser = () => import('../views/User/AddUser')
+const ProfileEdit = () => import(/* webpackChunkName:"edit-user"*/ '../views/User/ProfileEdit')
+const AddUser = () => import(/* webpackChunkName:"add-user"*/ '../views/User/AddUser')
 const UserList = () => import('../views/User/UserList')
+
+/*Block View */
+const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/Block/BlockApp')
+
+/* Unit View */
+const AddUnit = () => import(/* webpackChunkName:"list-block"*/ '../views/Unit/Add')
 
 
 Vue.use(VueRouter)
@@ -104,29 +110,48 @@ const userChildRoute = (prop) => [
     {
         path: 'profile',
         name: prop + '.profile',
-        meta: {auth: true, name: 'Profile'},
+        meta: {auth: true, name: 'Mi perfil'},
         component: Profile
     },
     {
         path: 'profile-edit/:id',
         name: prop + '.edit',
         meta: {auth: true, name: 'Edit Profile'},
-        component: ProfileEdit
+        component: ProfileEdit,
+        props: true
     },
     {
         path: 'add-user',
         name: prop + '.add',
-        meta: {auth: true, name: 'Add Profile'},
+        meta: {auth: true, name: 'Crear usuario'},
         component: AddUser
     },
     {
         path: 'user-list',
         name: prop + '.list',
-        meta: {auth: true, name: 'User List'},
+        meta: {auth: true, name: 'Lista de usuarios'},
         component: UserList
     }
 ]
 
+
+const unitChildRoute = (prop) => [
+    {
+        path: 'add-unit',
+        name: prop + '.add',
+        meta: {auth: true, name: 'Crear Unidad'},
+        component: AddUnit
+    },
+]
+
+const arcadomiRoutes = (prop) => [
+    {
+        path: 'block',
+        name: prop + '.block',
+        meta: {auth: true, name: 'Lista de Bloques'},
+        component: BlockApp
+    },
+]
 
 const routes = [
     {
@@ -164,6 +189,20 @@ const routes = [
         meta: {auth: true},
         children: userChildRoute('user')
     },
+    {
+        path: '/app',
+        name: 'app',
+        component: VerticleLayout,
+        meta: {auth: true},
+        children: arcadomiRoutes('app')
+    },
+    {
+        path: '/unit',
+        name: 'unit',
+        component: VerticleLayout,
+        meta: {auth: true},
+        children: unitChildRoute('unit')
+    },
 
     {
         path: '/callback',
@@ -179,6 +218,9 @@ const router = new VueRouter({
     routes
 })
 router.beforeEach((to, from, next) => {
+
+    store.commit('CLEAR_ERRORS');
+
     const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
     // if (publicPages.includes(to.path)) {
     //     localStorage.removeItem('user')
@@ -194,11 +236,10 @@ router.beforeEach((to, from, next) => {
         } else if (to.name === 'dashboard' || to.name === 'mini.dashboard') {
             return next('/home')
         }
-    }
-    else {
+    } else {
         if (loggedIn) {
             return next('/home')
-        }else {
+        } else {
             next()
         }
     }

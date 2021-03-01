@@ -14,7 +14,7 @@
                 id="ag-grid"
                 class="ag-theme-material border height-500"
                 :columnDefs="columnDefs"
-                :rowData="users"
+                :rowData="userList"
                 :floatingFilter="true"
                 :modules="modules"
                 rowSelection="multiple"
@@ -55,16 +55,9 @@ export default {
   },
   beforeMount() {
     this.columnDefs = [
-      {
-        headerName: "Name",
-        field: "name",
-        sortable: true,
-        filter: "agTextColumnFilter"
-      },
-      {headerName: "Company", field: "profile.company", sortable: true, filter: true},
-      {headerName: "Email", field: "email", sortable: true, filter: true},
-      {headerName: "Country", field: "country", sortable: true, filter: true},
-      {headerName: "Role", field: "role", sortable: true, filter: true},
+      {headerName: "Nombre", field: "fullname", sortable: true, filter: true},
+      {headerName: "Correo electronico", field: "email", sortable: true, filter: true},
+      {headerName: "Rol", field: "role", sortable: true, filter: true},
       {headerName: "Actions", cellRendererFramework: ActionUser}
     ];
   },
@@ -72,7 +65,7 @@ export default {
     ...mapActions('User', ['getUsers'])
   },
   computed: {
-    ...mapState('User', ['users'])
+    ...mapState('User', ['userList'])
   }
 };
 </script>

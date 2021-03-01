@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserProfilesTable extends Migration
+class CreateUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateUserProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_profiles', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('type_unit_id')
+                ->constrained();
+            $table->string('number');
             $table->foreignId('user_id')
-                ->constrained()
-                ->cascadeOnDelete();
-            $table->string('address');
-            $table->string('city');
-            $table->string('address_two')->nullable();
-            $table->string('company')->nullable();
-            $table->string('movil_number')->nullable();
+                ->constrained();
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreateUserProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_profiles');
+        Schema::dropIfExists('units');
     }
 }

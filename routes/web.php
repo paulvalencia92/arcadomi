@@ -8,14 +8,17 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
+
+    https://remixicon.com/
 |
 */
 
 
 use App\Models\User;
+use Silber\Bouncer\Database\Role;
 
 Route::get('/tests', function (){
-   return User::with('profile')->get();
+   return \App\Models\User::all();
 });
 
 Route::get('/{any}', 'VitoController')->where('any', '.*');

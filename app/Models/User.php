@@ -26,10 +26,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['role', 'fullname'];
 
-    public function profile()
+
+    public function getRoleAttribute()
     {
-        return $this->hasOne(UserProfile::class)->withDefault();
+        return $this->roles->first()->name;
+    }
+
+    public function getFullnameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 
 

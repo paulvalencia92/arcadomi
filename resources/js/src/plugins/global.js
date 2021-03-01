@@ -9,3 +9,4 @@ Vue.component('tab-nav-items', require('../components/core/tab/tab-nav-items').d
 Vue.component('tab-content', require('../components/core/tab/tab-content').default)
 Vue.component('tab-content-item', require('../components/core/tab/tab-content-item').default)
 Vue.component('TimeLine', require('../components/core/timeline/TimeLine').default)
+Vue.component('card-errors', require('../components/Errors/CardErrors').default)

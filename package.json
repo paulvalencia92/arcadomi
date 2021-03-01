@@ -64,6 +64,7 @@
         "vue-photo-grid": "^1.0.2",
         "vue-property-decorator": "^8.5.1",
         "vue-router": "^3.2.0",
+        "vue-search-select": "^2.9.3",
         "vue-select": "^3.10.8",
         "vue-slick": "^1.1.15",
         "vue-slider-component": "3.0.32",

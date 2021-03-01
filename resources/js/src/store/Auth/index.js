@@ -12,6 +12,7 @@ export default {
         SET_USER_DATA(state, data) {
             state.access_token = data.access_token;
             state.user = data.user;
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + data.access_token;
         },
         CLEAR_USER_DATA(state, data) {
             state.access_token = null;
@@ -35,11 +36,7 @@ export default {
                     this.loading = false;
                 });
         },
-        // async register(userData) {
-        //     return axios.post(process.env.MIX_SENTRY_DSN_API + 'api/register', userData)
-        // },
         async logout(context) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${context.state.access_token}`;
             const response = await axios.post('/api/logout');
             context.commit('CLEAR_USER_DATA');
         },
