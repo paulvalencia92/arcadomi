@@ -5,8 +5,13 @@
     "/edit-user.js": "/edit-user.js",
     "/list-block.js": "/list-block.js",
     "/vendors~canvg.js": "/vendors~canvg.js",
+    "/vendors~list-block.js": "/vendors~list-block.js",
     "/vendors~pdfmake.js": "/vendors~pdfmake.js",
     "/vendors~xlsx.js": "/vendors~xlsx.js",
     "/xlsx.js": "/xlsx.js",
-    "/vendors~list-block.js": "/vendors~list-block.js"
+    "/add-unit.js": "/add-unit.js",
+    "/list-unit.js": "/list-unit.js",
+    "/vendors~add-unit.js": "/vendors~add-unit.js",
+    "/add-unit~list-unit.js": "/add-unit~list-unit.js",
+    "/vendors~add-unit~list-unit.js": "/vendors~add-unit~list-unit.js"
 }

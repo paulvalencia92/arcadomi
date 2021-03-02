@@ -20,6 +20,9 @@ class CreateUnitsTable extends Migration
             $table->string('number');
             $table->foreignId('user_id')
                 ->constrained();
+            $table->unsignedBigInteger('block_id')->nullable();
+            $table->foreign('block_id')
+                ->references('id')->on('blocks');
             $table->timestamps();
         });
     }

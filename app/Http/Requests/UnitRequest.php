@@ -23,15 +23,11 @@ class UnitRequest extends FormRequest
      */
     public function rules()
     {
-        switch ($this->method()) {
-            case 'POST':
-            {
-                return [
-                    'type_unit_id' => ['required', 'exists:App\Models\TypeUnit,id'],
-                    'number' => ['required'],
-                    'user_id' => ['required', 'exists:App\Models\User,id'],
-                ];
-            }
-        }
+        return [
+            'type_unit_id' => ['required', 'exists:App\Models\TypeUnit,id'],
+            'number' => ['required'],
+            'user_id' => ['required', 'exists:App\Models\User,id'],
+            'block_id' => ['nullable', 'sometimes', 'exists:App\Models\Block,id']
+        ];
     }
 }

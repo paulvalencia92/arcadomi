@@ -178,6 +178,7 @@
   },
   "units": {
     "title": "Units",
-    "add": "Unit add"
+    "add": "Unit add",
+    "list": "Units list"
   }
 }

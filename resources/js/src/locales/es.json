@@ -178,6 +178,7 @@
   },
   "units": {
     "title": "Unidades",
-    "add": "Crear unidades"
+    "add": "Crear unidades",
+    "list": "Lista de unidades"
   }
 }

@@ -97,6 +97,17 @@
         "class_name": "",
         "is_icon_class": true,
         "icon": "ri-home-4-line"
+      },
+      {
+        "title": "Units List",
+        "name": "units.list",
+        "is_active": false,
+        "link": {
+          "name": "unit.list"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-home-4-line"
       }
     ]
   },

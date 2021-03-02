@@ -14,11 +14,11 @@
 */
 
 
-use App\Models\User;
-use Silber\Bouncer\Database\Role;
+use App\Models\Unit;
 
-Route::get('/tests', function (){
-   return \App\Models\User::all();
+Route::get('/tests', function () {
+    $units = Unit::with('user', 'type_unit', 'block')->get();
+    return response()->json($units, 200);
 });
 
 Route::get('/{any}', 'VitoController')->where('any', '.*');

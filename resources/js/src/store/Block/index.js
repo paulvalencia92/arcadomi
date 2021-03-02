@@ -5,7 +5,13 @@ export default {
     state: {
         blocks: []
     },
-    getters: {},
+    getters: {
+        optionsTypeBlock(state) {
+            return state.blocks.map(block => {
+                return {text: block.name, value: block.id}
+            })
+        }
+    },
     mutations: {
         SET_BLOCKS(state, blocks) {
             state.blocks = blocks;
