@@ -14,11 +14,13 @@
 */
 
 
-use App\Models\Unit;
+use App\Models\Block;
 
 Route::get('/tests', function () {
-    $units = Unit::with('user', 'type_unit', 'block')->get();
-    return response()->json($units, 200);
+    $blocks = Block::withCount('units')->get();
+    return $blocks;
 });
+
+
 
 Route::get('/{any}', 'VitoController')->where('any', '.*');

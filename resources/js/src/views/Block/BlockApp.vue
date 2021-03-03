@@ -26,10 +26,32 @@
     ==============================-->
     <b-row v-if="blocks.length">
       <b-col md="4" v-for="block in blocks" :key="block.id">
-        <b-card class="iq-mb-3" :header="block.name">
-          <b-button @click="modalDeleteBlock(block.id)" variant="danger" size="sm">Eliminar</b-button>
-          <b-button @click="modalEditBlock(block)" variant="primary" size="sm">Editar</b-button>
-        </b-card>
+<!--        <b-card class="iq-mb-3" :header="block.name">-->
+<!--          <b-button @click="modalDeleteBlock(block.id)" variant="danger" size="sm">Eliminar</b-button>-->
+<!--          <b-button @click="modalEditBlock(block)" variant="primary" size="sm">Editar</b-button>-->
+<!--        </b-card>-->
+
+
+        <iq-card bodyClass="pro-bg-card" class="bg-transparent shadow-none" headerClass="bg-primary">
+          <template v-slot:headerTitle>
+            <h5 class="text-white">Bloque: <b>{{ block.name }}</b></h5>
+          </template>
+          <template v-slot:headerAction>
+            <i class="ri-delete-bin-line mr-0 font-size-18 mr-2 clickeable" @click.stop="modalDeleteBlock(block.id)"/>
+            <i class="ri-ball-pen-line mr-0 font-size-18 clickeable" @click.stop="modalEditBlock(block)"/>
+          </template>
+          <template v-slot:body>
+            <p>Unidades: {{ block.units_count }}</p>
+          </template>
+        </iq-card>
+
+
+
+
+
+
+
+
       </b-col>
     </b-row>
 

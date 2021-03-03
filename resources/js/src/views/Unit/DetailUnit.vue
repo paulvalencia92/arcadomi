@@ -2,7 +2,7 @@
   <section>
     <iq-card bodyClass="pro-bg-card" class="bg-transparent shadow-none" headerClass="bg-primary">
       <template v-slot:headerTitle>
-        <h5 class="text-white">Propietario {{ unit.user.fullname }}</h5>
+        <h5 class="text-white">Propietario <b>{{ unit.user.fullname }}</b></h5>
       </template>
       <template v-slot:headerAction>
         <i class="ri-delete-bin-line mr-0 font-size-18 mr-2 clickeable" @click.stop="modalDeleteUnit"/>

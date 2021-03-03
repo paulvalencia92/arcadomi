@@ -17,6 +17,12 @@ class UserController extends Controller
         return response()->json($user, 200);
     }
 
+    public function show(User $user)
+    {
+        return $user->id;
+    }
+
+
 
     public function store(UserRequest $request)
     {

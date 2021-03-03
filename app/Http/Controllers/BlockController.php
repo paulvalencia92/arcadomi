@@ -10,7 +10,7 @@ class BlockController extends Controller
 
     public function index()
     {
-        $blocks = Block::all();
+        $blocks = Block::withCount('units')->get();
         return response()->json($blocks, 200);
     }
 
