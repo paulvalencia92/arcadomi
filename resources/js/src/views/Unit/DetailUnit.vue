@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <b-container>
     <iq-card bodyClass="pro-bg-card" class="bg-transparent shadow-none" headerClass="bg-primary">
       <template v-slot:headerTitle>
         <h5 class="text-white">Propietario <b>{{ unit.user.fullname }}</b></h5>
@@ -12,6 +12,13 @@
         <p>Tipo de unidad: {{ unit.type_unit.name }}</p>
         <p>Numero: {{ unit.number }}</p>
         <p v-if="unit.block">Bloque: {{ unit.block.name }}</p>
+
+
+        <b-dropdown variant="primary" id="accion-unit" text="Acciones" class="m-md-2">
+          <b-dropdown-item>Ver como unidad</b-dropdown-item>
+          <b-dropdown-item :to="`/unit/${unit.id}/configuration`">Configuración</b-dropdown-item>
+        </b-dropdown>
+
       </template>
     </iq-card>
 
@@ -22,7 +29,7 @@
       <form-unit :unit="drafUnit" @save="editUnit"></form-unit>
     </b-modal>
 
-  </section>
+  </b-container>
 </template>
 
 <script>
@@ -75,8 +82,8 @@ export default {
 </script>
 
 <style scoped>
-  .clickeable {
-    cursor: pointer;
-  }
+.clickeable {
+  cursor: pointer;
+}
 
 </style>

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UnitRequest;
 use App\Models\Unit;
+use App\Traits\Unit\ManageContact;
+
 
 class UnitController extends Controller
 {
+    use ManageContact;
 
     public function index()
     {

@@ -52,6 +52,7 @@
                 <div class="new-user-info">
                   <b-row>
 
+<!--                    errors-->
                     <b-col md="12">
                       <card-errors v-if="errors.length"/>
                     </b-col>
@@ -105,14 +106,11 @@
                       </ValidationProvider>
                     </b-form-group>
 
-                    <b-form-group class="col-sm-6" label="Fecha de nacimiento:" label-for="dob">
-                      <ValidationProvider name="Fecha de nacimiento" rules="required" v-slot="{ errors }">
-                        <b-form-input type="date" v-model="user.date_of_birth" id="dob" :class="(errors.length > 0 ? ' is-invalid' : '')"></b-form-input>
-                        <div class="invalid-feedback">
-                          <span>{{ errors[0] }}</span>
-                        </div>
-                      </ValidationProvider>
-                    </b-form-group>
+                    <div class="form-group col-sm-6">
+                      <label class="d-block" for="dob">Fecha de nacimiento - <span
+                          class="text-sm-left text-muted font-italic">opcional</span></label>
+                      <b-form-input type="date" v-model="user.date_of_birth" id="dob"></b-form-input>
+                    </div>
 
                   </b-row>
 
@@ -142,7 +140,6 @@
                         </div>
                       </ValidationProvider>
                     </b-form-group>
-
 
 
                     <b-form-group class="col-md-6" label="Rol:" label-for="selectuserrole">

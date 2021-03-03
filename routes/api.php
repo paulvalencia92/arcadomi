@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AuthController, RolesController};
+use App\Http\Controllers\{AuthController, RolesController, UnitController};
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:api'], function () {
      *    Units
      *================================**/
     Route::apiResource('/units', 'UnitController');
+    Route::post('/units/contact', [UnitController::class,'createContact']);
 
     /**=================================
      *    Auth

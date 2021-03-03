@@ -10,6 +10,15 @@ export default {
             return state.roles.map(role => {
                 return {text: role.title, value: role.name}
             })
+        },
+        optionsContact(state) {
+            let roles = [];
+            state.roles.filter(role => {
+                if (!['super-admin', 'admin'].includes(role.name)) {
+                    roles.push({text: role.title, value: role.name})
+                }
+            });
+            return roles;
         }
     },
     mutations: {

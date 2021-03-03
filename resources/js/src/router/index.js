@@ -36,6 +36,7 @@ const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/Block
 /* Unit View */
 const AddUnit = () => import(/* webpackChunkName:"add-unit"*/ '../views/Unit/AddUnit')
 const ListUnit = () => import(/* webpackChunkName:"list-unit"*/ '../views/Unit/ListUnit')
+const ConfigUnit = () => import(/* webpackChunkName:"config-unit"*/ '../views/Unit/ConfigUnit')
 
 
 Vue.use(VueRouter)
@@ -148,6 +149,13 @@ const unitChildRoute = (prop) => [
         name: prop + '.list',
         meta: {auth: true, name: 'Lista de unidades'},
         component: ListUnit
+    },
+    {
+        path: ':id/configuration',
+        name: prop + '.configuration',
+        meta: {auth: true, name: 'Configuracion'},
+        component: ConfigUnit,
+        props: true
     },
 ]
 

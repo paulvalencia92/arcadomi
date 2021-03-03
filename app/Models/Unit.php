@@ -23,4 +23,9 @@ class Unit extends Model
         return $this->belongsTo(Block::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }

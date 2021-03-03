@@ -8,7 +8,7 @@ class RolesController extends Controller
 {
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::orderBy('title', 'ASC')->get();
         return response()->json($roles, 200);
     }
 }

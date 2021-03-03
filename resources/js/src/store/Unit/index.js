@@ -35,7 +35,8 @@ export default {
                 core.showSnackbar("error", "No ha podido guardar el recurso");
                 return Promise.reject('error');
             }
-            context.commit('ADD_UNIT', unit);
+
+            context.commit('ADD_UNIT', response.data);
             return Promise.resolve(response.data);
         },
 
@@ -54,6 +55,16 @@ export default {
             context.commit('REMOVE_UNIT', unitId);
             return Promise.resolve('deleted success');
         },
+
+        async createContactForUnit(context, user) {
+            const response = await axios.post('/api/units/contact', user);
+            if (response.data.errors) {
+                context.commit('SET_ERRORS', response.data.errors, {root: true});
+                core.showSnackbar("error", "No ha podido actualizar el recurso");
+                return Promise.reject('error');
+            }
+            return Promise.resolve(response.data);
+        }
 
     },
 };

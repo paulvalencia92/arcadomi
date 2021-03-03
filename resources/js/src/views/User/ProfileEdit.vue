@@ -51,8 +51,6 @@
                           <card-errors v-if="errors.length"/>
                         </b-col>
 
-
-
                         <b-col md="12">
                           <div class="profile-img-edit">
                             <!--                                :src="imagePreview ? imagePreview :  user.image ? `/storage/users/${user.image}` : imageDefault"-->

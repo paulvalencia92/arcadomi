@@ -3,7 +3,6 @@
 namespace App\Models;
 
 
-use App\Traits\Hashidable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -38,6 +37,11 @@ class User extends Authenticatable
     public function getFullnameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function units()
+    {
+        return $this->belongsToMany(Unit::class);
     }
 
 

@@ -36,5 +36,17 @@ class BouncerSeeder extends Seeder
             'name' => 'arrendatario',
             'title' => 'Arrendatario',
         ]);
+
+        Bouncer::role()->create([
+            'name' => 'inmobiliaria',
+            'title' => 'Inmobiliaria',
+        ]);
+
+        Bouncer::role()->create([
+            'name' => 'empleada-domestica',
+            'title' => 'Empleada domestica',
+        ]);
+
+
     }
 }
