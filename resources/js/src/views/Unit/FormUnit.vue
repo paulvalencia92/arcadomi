@@ -5,7 +5,7 @@
         <template v-slot:body>
           <b-row>
 
-<!--            Errors validation-->
+            <!--            Errors validation-->
             <b-col md="12">
               <card-errors v-if="errors.length"/>
             </b-col>
@@ -21,7 +21,6 @@
                 </div>
               </ValidationProvider>
             </b-form-group>
-
 
 
             <b-form-group class="col-md-6" label="Asignar propietario:" label-for="mobno">

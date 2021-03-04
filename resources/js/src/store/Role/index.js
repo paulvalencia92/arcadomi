@@ -7,9 +7,13 @@ export default {
     },
     getters: {
         optionsRoles(state) {
-            return state.roles.map(role => {
-                return {text: role.title, value: role.name}
-            })
+            let roles = [];
+            state.roles.filter(role => {
+                if (['super-admin', 'admin', 'propietario'].includes(role.name)) {
+                    roles.push({text: role.title, value: role.name})
+                }
+            });
+            return roles;
         },
         optionsContact(state) {
             let roles = [];

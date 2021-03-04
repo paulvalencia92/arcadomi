@@ -17,12 +17,11 @@ class CreateUnitsTable extends Migration
             $table->id();
             $table->foreignId('type_unit_id')
                 ->constrained();
-            $table->string('number')->unique();
-            $table->foreignId('user_id')
-                ->constrained();
             $table->unsignedBigInteger('block_id')->nullable();
             $table->foreign('block_id')
                 ->references('id')->on('blocks');
+            $table->string('number')->unique();
+            $table->string('name');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UnitRequest extends FormRequest
 {
@@ -23,11 +24,39 @@ class UnitRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'type_unit_id' => ['required', 'exists:App\Models\TypeUnit,id'],
-            'number' => ['required'],
-            'user_id' => ['required', 'exists:App\Models\User,id'],
-            'block_id' => ['nullable', 'sometimes', 'exists:App\Models\Block,id']
-        ];
+        switch ($this->method) {
+            case 'POST':
+            {
+
+            }
+            case 'PUT':
+            {
+
+            }
+        }
+
+
+        switch ($this->method()) {
+            case 'POST':
+            {
+                return [
+                    'type_unit_id' => ['required', 'exists:App\Models\TypeUnit,id'],
+                    'number' => ['required', Rule::unique('units')],
+                    'user_id' => ['required', 'exists:App\Models\User,id'],
+                    'block_id' => ['nullable', 'sometimes', 'exists:App\Models\Block,id'],
+                ];
+            }
+            case 'PUT':
+            {
+                return [
+                    'type_unit_id' => ['required', 'exists:App\Models\TypeUnit,id'],
+                    'number' => ['required', Rule::unique('units')->ignore($this->unit)],
+                    'name' => ['required'],
+                    'block_id' => ['nullable', 'sometimes', 'exists:App\Models\Block,id'],
+                ];
+            }
+
+        }
+
     }
 }

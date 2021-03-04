@@ -6,7 +6,7 @@
           :attr="this.params.data.id"
           data-action-type="edit"
           class="btn btn-default text-success">
-        <i class="fa fa-pencil"></i> Editar
+        <i class="ri-edit-box-line"/>
       </button>
     </router-link>
     <button
@@ -15,7 +15,7 @@
         @click="showModalDeleteUser(params.data.id)"
         data-action-type="remove"
         class="btn btn-default text-danger">
-      <i class="fa fa-trash"></i> Eliminar
+      <i class="fa fa-trash"/>
     </button>
   </div>
 </template>

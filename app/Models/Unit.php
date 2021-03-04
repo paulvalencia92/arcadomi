@@ -13,14 +13,10 @@ class Unit extends Model
         return $this->belongsTo(TypeUnit::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function block()
     {
         return $this->belongsTo(Block::class);
+//        return $this->belongsTo(Block::class)->withDefault();
     }
 
     public function users()

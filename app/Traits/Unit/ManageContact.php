@@ -5,6 +5,7 @@ namespace App\Traits\Unit;
 
 
 use App\Http\Requests\UnitContactRequest;
+use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,12 +24,17 @@ trait ManageContact
             'password' => Hash::make('arcadomi'),
         ]);
 
-        $user->assign($request->role);
-
-        $user->units()->sync($request->unit_id);
+        $role = $user->assign($request->role);
+        $user->units()->sync([$request->unit_id => ['bouncer_assigned_role_id' => $role->id]]);
 
         return $user;
+    }
 
+
+    public function getUnitContacts(Unit $unit)
+    {
+        $unitUsers = $unit->users()->get();
+        return response()->json($unitUsers, 200);
     }
 
 }

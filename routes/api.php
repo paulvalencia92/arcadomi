@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:api'], function () {
      *    Units
      *================================**/
     Route::apiResource('/units', 'UnitController');
+    Route::get('/units/contact/{unit}', [UnitController::class,'getUnitContacts']);
     Route::post('/units/contact', [UnitController::class,'createContact']);
 
     /**=================================

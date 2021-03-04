@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UnitRequest;
 use App\Models\Unit;
+use App\Models\User;
 use App\Traits\Unit\ManageContact;
+use Illuminate\Support\Facades\DB;
 
 
 class UnitController extends Controller
@@ -13,21 +15,33 @@ class UnitController extends Controller
 
     public function index()
     {
-        $units = Unit::with('user', 'type_unit', 'block')->get();
+        $units = Unit::with('type_unit', 'block')->withCount('users')->get();
         return response()->json($units, 200);
     }
 
 
     public function store(UnitRequest $request)
     {
+
+        DB::beginTransaction();
         $unit = Unit::create([
             'type_unit_id' => $request->type_unit_id,
             'number' => $request->number,
-            'user_id' => $request->user_id,
+            'name' => $request->number,
             'block_id' => $request->block_id
         ]);
 
-        return response()->json($unit->load('user', 'type_unit', 'block'), 201);
+        $propietario = User::find($request->user_id)->roles()->where('name', 'propietario')->first();
+
+        $unit->users()->sync([
+            $request->user_id => [
+                'primary_contact' => true,
+                'bouncer_assigned_role_id' => $propietario->id
+            ]
+        ]);
+
+        DB::commit();
+        return response()->json($unit->load('type_unit', 'block')->loadCount('users'), 201);
     }
 
 
@@ -35,12 +49,10 @@ class UnitController extends Controller
     {
         $unit->type_unit_id = $request->type_unit_id;
         $unit->number = $request->number;
-        $unit->user_id = $request->user_id;
+        $unit->name = $request->name;
         $unit->block_id = $request->block_id;
-
         $unit->update();
-
-        return response()->json($unit->load('user', 'type_unit', 'block'), 201);
+        return response()->json($unit->load('type_unit', 'block')->loadCount('users'), 201);
 
     }
 

@@ -31,7 +31,7 @@ export default {
         type_unit_id: '',
         number: '',
         user_id: '',
-        block_id: ''
+        block_id: '',
       }
     }
   },

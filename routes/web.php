@@ -15,10 +15,15 @@
 
 
 use App\Models\Block;
+use App\Models\Unit;
 
 Route::get('/tests', function () {
-    $blocks = Block::withCount('units')->get();
-    return $blocks;
+
+    $user = \App\Models\User::find(3);
+//    $user = \App\Models\User::find(3);
+//    return $user->load('units');
+     $propietario = \App\Models\User::find(3)->roles()->where('name','propietario')->first();
+    return $propietario;
 });
 
 

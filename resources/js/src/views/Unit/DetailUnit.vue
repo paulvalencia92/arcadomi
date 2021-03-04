@@ -2,7 +2,7 @@
   <b-container>
     <iq-card bodyClass="pro-bg-card" class="bg-transparent shadow-none" headerClass="bg-primary">
       <template v-slot:headerTitle>
-        <h5 class="text-white">Propietario <b>{{ unit.user.fullname }}</b></h5>
+        <h5 class="text-white">Nombre <b>{{ unit.name }}</b></h5>
       </template>
       <template v-slot:headerAction>
         <i class="ri-delete-bin-line mr-0 font-size-18 mr-2 clickeable" @click.stop="modalDeleteUnit"/>
@@ -12,6 +12,7 @@
         <p>Tipo de unidad: {{ unit.type_unit.name }}</p>
         <p>Numero: {{ unit.number }}</p>
         <p v-if="unit.block">Bloque: {{ unit.block.name }}</p>
+        <p>Usuarios: {{ unit.users_count }}</p>
 
 
         <b-dropdown variant="primary" id="accion-unit" text="Acciones" class="m-md-2">
@@ -26,21 +27,21 @@
          MODAL EDITAR UNIDAD
     ==============================-->
     <b-modal size="lg" ref="edit_unit" centered title="Editar unidad" hide-footer>
-      <form-unit :unit="drafUnit" @save="editUnit"></form-unit>
+      <form-unit-edit :unit="drafUnit" @save="editUnit"></form-unit-edit>
     </b-modal>
 
   </b-container>
 </template>
 
 <script>
-import FormUnit from "./FormUnit";
+import FormUnitEdit from "./FormUnitEdit";
 import {mapActions} from "vuex";
 import {core} from "../../config/pluginInit";
 
 export default {
   name: "ItemUnit",
   components: {
-    'form-unit': FormUnit
+    'form-unit-edit': FormUnitEdit
   },
   props: ['unit'],
   data() {
@@ -58,7 +59,6 @@ export default {
       this.updateUnit(unitEdit).then(response => {
         core.showSnackbar("success", "Unidad actualizada correctamente");
         this.$refs['edit_unit'].hide();
-        // this.$router.replace("/unit/list-unit");
       });
     },
     modalDeleteUnit() {

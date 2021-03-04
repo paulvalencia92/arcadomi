@@ -49,7 +49,7 @@ export default store = new Vuex.Store({
         },
         CLEAR_ERRORS(state) {
             state.errors = [];
-        }
+        },
     },
     actions: {},
     getters: {

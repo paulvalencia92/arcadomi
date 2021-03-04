@@ -5,6 +5,7 @@ export default {
     namespaced: true,
     state: {
         units: [],
+        unitUsers: [],
     },
     getters: {},
     mutations: {
@@ -21,7 +22,17 @@ export default {
         REMOVE_UNIT(state, unitId) {
             const index = state.units.findIndex(unit => unit.id == unitId);
             state.units.splice(index, 1);
-        }
+        },
+        SET_UNIT_USERS(state, unitUsers) {
+            state.unitUsers = unitUsers;
+        },
+        ADD_UNIT_USER(state, unitUser) {
+            state.unitUsers.push(unitUser);
+        },
+        REMOVE_UNIT_USERS(state, userId) {
+            const index = state.unitUsers.findIndex(user => user.id == userId);
+            state.unitUsers.splice(index, 1);
+        },
     },
     actions: {
         async getUnits(context) {
@@ -35,7 +46,6 @@ export default {
                 core.showSnackbar("error", "No ha podido guardar el recurso");
                 return Promise.reject('error');
             }
-
             context.commit('ADD_UNIT', response.data);
             return Promise.resolve(response.data);
         },
@@ -63,7 +73,12 @@ export default {
                 core.showSnackbar("error", "No ha podido actualizar el recurso");
                 return Promise.reject('error');
             }
+            context.commit('ADD_UNIT_USER', response.data);
             return Promise.resolve(response.data);
+        },
+        async getUnitUsers(context, unitId) {
+            const response = await axios.get(`/api/units/contact/${unitId}`);
+            context.commit('SET_UNIT_USERS', response.data);
         }
 
     },
