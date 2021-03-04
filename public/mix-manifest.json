@@ -4,6 +4,7 @@
     "/add-unit.js": "/add-unit.js",
     "/add-unit~list-unit.js": "/add-unit~list-unit.js",
     "/add-user.js": "/add-user.js",
+    "/config-unit.js": "/config-unit.js",
     "/edit-user.js": "/edit-user.js",
     "/list-block.js": "/list-block.js",
     "/list-unit.js": "/list-unit.js",
@@ -11,7 +12,5 @@
     "/vendors~canvg.js": "/vendors~canvg.js",
     "/vendors~pdfmake.js": "/vendors~pdfmake.js",
     "/vendors~xlsx.js": "/vendors~xlsx.js",
-    "/xlsx.js": "/xlsx.js",
-    "/config-unit.js": "/config-unit.js",
-    "/unit-contact.js": "/unit-contact.js"
+    "/xlsx.js": "/xlsx.js"
 }

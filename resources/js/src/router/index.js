@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './../store/index'
-
+import axios from "axios";
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
 const Default = () => import('../layouts/BlankLayout')
@@ -226,6 +226,15 @@ const routes = [
         component: Callback
     }
 ]
+
+
+axios.interceptors.response.use(response => {
+    if (response.data.status == false) {
+        store.commit('Auth/CLEAR_USER_DATA');
+    }
+    return response
+});
+
 
 const router = new VueRouter({
     mode: 'history',
