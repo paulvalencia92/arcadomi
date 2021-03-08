@@ -180,5 +180,11 @@
     "title": "Unidades",
     "add": "Crear unidades",
     "list": "Lista de unidades"
+  },
+  "settings": {
+    "title": "Config",
+    "roles": {
+      "title": "Roles"
+    }
   }
 }

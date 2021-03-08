@@ -16,14 +16,13 @@
 
 use App\Models\Block;
 use App\Models\Unit;
+use Silber\Bouncer\Database\Ability;
+use Silber\Bouncer\Database\Role;
 
 Route::get('/tests', function () {
 
-    $user = \App\Models\User::find(3);
-//    $user = \App\Models\User::find(3);
-//    return $user->load('units');
-     $propietario = \App\Models\User::find(3)->roles()->where('name','propietario')->first();
-    return $propietario;
+    $abilities = Ability::orderBy('title', 'ASC')->get();
+    return response()->json($abilities, 200);
 });
 
 

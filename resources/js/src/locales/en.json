@@ -180,5 +180,8 @@
     "title": "Units",
     "add": "Unit add",
     "list": "Units list"
+  },
+  "settings": {
+    "title": "Settings"
   }
 }

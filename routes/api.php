@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AuthController, RolesController, UnitController};
+use App\Http\Controllers\{AuthController, RoleController, RolesController, UnitController};
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -31,13 +31,16 @@ Route::group(['middleware' => 'auth:api'], function () {
      *    Units
      *================================**/
     Route::apiResource('/units', 'UnitController');
-    Route::get('/units/contact/{unit}', [UnitController::class,'getUnitContacts']);
-    Route::post('/units/contact', [UnitController::class,'createContact']);
+    Route::get('/units/contact/{unit}', [UnitController::class, 'getUnitContacts']);
+    Route::post('/units/contact', [UnitController::class, 'createContact']);
 
     /**=================================
      *    Auth
      *================================**/
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::apiResource('/roles', 'RoleController');
+    Route::get('/roles-abilities', [RoleController::class, 'getAbilities']);
 
 });
 

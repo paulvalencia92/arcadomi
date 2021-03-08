@@ -11,16 +11,19 @@ class BouncerSeeder extends Seeder
      */
     public function run()
     {
+        $this->createAbilities();
         $this->createRoles();
     }
 
 
     protected function createRoles()
     {
-        Bouncer::role()->create([
+        $superadmin = Bouncer::role()->create([
             'name' => 'super-admin',
             'title' => 'Super administrador',
         ]);
+
+        $superadmin->allow()->everything();
 
         Bouncer::role()->create([
             'name' => 'admin',
@@ -46,7 +49,11 @@ class BouncerSeeder extends Seeder
             'name' => 'empleada-domestica',
             'title' => 'Empleada domestica',
         ]);
+    }
 
+
+    protected function createAbilities()
+    {
 
     }
 }

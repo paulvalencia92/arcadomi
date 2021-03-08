@@ -52,7 +52,7 @@
                 <div class="new-user-info">
                   <b-row>
 
-                    <!--                    errors-->
+                    <!--errors-->
                     <b-col md="12">
                       <card-errors v-if="errors.length"/>
                     </b-col>

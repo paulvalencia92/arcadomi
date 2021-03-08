@@ -112,6 +112,29 @@
     ]
   },
   {
+    "title": "Config",
+    "name": "settings.title",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-settings-5-line",
+    "children": [
+      {
+        "title": "Roles",
+        "name": "settings.roles.title",
+        "is_active": false,
+        "link": {
+          "name": "config.role"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-user-settings-line"
+      }
+    ]
+  },
+  {
     "title": "Menu Level",
     "name": "sidebar.menuLevel",
     "is_heading": false,

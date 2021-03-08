@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './../store/index'
 import axios from "axios";
+
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
 const Default = () => import('../layouts/BlankLayout')
@@ -31,12 +32,15 @@ const AddUser = () => import(/* webpackChunkName:"add-user"*/ '../views/User/Add
 const UserList = () => import('../views/User/UserList')
 
 /*Block View */
-const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/Block/BlockApp')
+const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/App/Block/BlockApp')
 
 /* Unit View */
 const AddUnit = () => import(/* webpackChunkName:"add-unit"*/ '../views/Unit/AddUnit')
 const ListUnit = () => import(/* webpackChunkName:"list-unit"*/ '../views/Unit/ListUnit')
-const ConfigUnit = () => import(/* webpackChunkName:"config-unit"*/ '../views/Unit/ConfigUnit')
+const ConfigUnit = () => import(/* webpackChunkName:"config-unit"*/ '../views/Unit/ConfigUnit');
+
+/* Config View*/
+const RoleApp = () => import(/* webpackChunkName:"role-app"*/ "../views/Config/Role/RoleApp");
 
 
 Vue.use(VueRouter)
@@ -136,7 +140,9 @@ const userChildRoute = (prop) => [
     }
 ]
 
-
+//*-------------------------------//
+//          UNIDADES             //
+//-------------------------------//
 const unitChildRoute = (prop) => [
     {
         path: 'add-unit',
@@ -159,12 +165,30 @@ const unitChildRoute = (prop) => [
     },
 ]
 
+
+//*-------------------------------//
+//------ Rutas generales         //
+//-------------------------------//
+
 const arcadomiRoutes = (prop) => [
     {
         path: 'block',
         name: prop + '.block',
         meta: {auth: true, name: 'Lista de Bloques'},
         component: BlockApp
+    },
+]
+
+//*-------------------------------//
+//-----Config child routes        //
+//-------------------------------//
+
+const configChildRoute = (prop) => [
+    {
+        path: 'role',
+        name: prop + '.role',
+        meta: {auth: true, name: 'Roles'},
+        component: RoleApp
     },
 ]
 
@@ -217,6 +241,13 @@ const routes = [
         component: VerticleLayout,
         meta: {auth: true},
         children: unitChildRoute('unit')
+    },
+    {
+        path: '/config',
+        name: 'config',
+        component: VerticleLayout,
+        meta: {auth: true},
+        children: configChildRoute('config')
     },
 
     {
