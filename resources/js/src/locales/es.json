@@ -186,5 +186,14 @@
     "roles": {
       "title": "Roles"
     }
+  },
+  "comunication": {
+    "title": "Comunicación",
+    "advertisements": {
+      "title": "Anuncios"
+    },
+    "advertisement_categories": {
+      "title": "Categorias"
+    }
   }
 }

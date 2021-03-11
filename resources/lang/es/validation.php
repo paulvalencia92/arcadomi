@@ -192,6 +192,7 @@ return [
 
 
         'profile_image' => 'Imagen de perfil',
+        'image_path' => 'Imagen',
 
     ],
 ];

@@ -13,13 +13,14 @@ import Setting from './Setting/index'
 import User from './User/index';
 import TypeUnits from './TypeUnit/index';
 import Unit from './Unit';
-
+import VideoConference from './VideoConference';
+import AdvertisementCategory from './AdvertisementCategory';
 import axios from "axios";
 
 
 const vuexLocal = new VuexPersistence({
     store: window.localStorage,
-    modules: ['Setting', 'Ecommerce', 'Auth', 'User', 'Role', 'Block', 'TypeUnits', 'Unit'],
+    modules: ['Setting', 'Ecommerce', 'Auth', 'User', 'Role', 'Block', 'TypeUnits', 'Unit', 'VideoConference', 'AdvertisementCategory'],
 });
 
 
@@ -37,7 +38,9 @@ export default store = new Vuex.Store({
         Role,
         Block,
         TypeUnits,
-        Unit
+        Unit,
+        VideoConference,
+        AdvertisementCategory
     },
     state: {
         errors: [],

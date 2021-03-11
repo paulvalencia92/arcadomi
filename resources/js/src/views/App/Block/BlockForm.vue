@@ -3,9 +3,9 @@
     <ValidationObserver v-slot="{ handleSubmit }">
       <b-form @submit.prevent="handleSubmit(onSubmit)">
 
-        <b-col md="12">
-          <card-errors v-if="errors.length"/>
-        </b-col>
+
+        <card-errors v-if="errors.length"/>
+
 
         <b-form-group class="form-group" label="Nombre del bloque" label-for="block_tile">
           <ValidationProvider name="nombre del bloque" rules="required" v-slot="{ errors }">

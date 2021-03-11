@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import store from './../store/index'
 import axios from "axios";
 
+
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
 const Default = () => import('../layouts/BlankLayout')
@@ -37,11 +38,14 @@ const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/App/B
 /* Unit View */
 const AddUnit = () => import(/* webpackChunkName:"add-unit"*/ '../views/Unit/AddUnit')
 const ListUnit = () => import(/* webpackChunkName:"list-unit"*/ '../views/Unit/ListUnit')
-const ConfigUnit = () => import(/* webpackChunkName:"config-unit"*/ '../views/Unit/ConfigUnit');
+const ConfigUnit = () => import(/* webpackChunkName:"config-unit"*/ '../views/Unit/ConfigUnit')
 
-/* Config View*/
+
+/* Config View */
 const RoleApp = () => import(/* webpackChunkName:"role-app"*/ "../views/Config/Role/RoleApp");
 
+/* Comunication View */
+const CategoryApp = () => import(/* webpackChunkName:"advertisement-category-app"*/ "../views/Comunication/AdvertisementCategory/CategoryApp");
 
 Vue.use(VueRouter)
 
@@ -112,6 +116,10 @@ const pagesChildRoutes = (prop) => [
     }
 ]
 
+
+//*-------------------------------//
+//--- USUARIOS                   //
+//-------------------------------//
 const userChildRoute = (prop) => [
     {
         path: 'profile',
@@ -167,12 +175,12 @@ const unitChildRoute = (prop) => [
 
 
 //*-------------------------------//
-//------ Rutas generales         //
+//------ Rutas APP               //
 //-------------------------------//
 
 const arcadomiRoutes = (prop) => [
     {
-        path: 'block',
+        path: '/block',
         name: prop + '.block',
         meta: {auth: true, name: 'Lista de Bloques'},
         component: BlockApp
@@ -185,12 +193,26 @@ const arcadomiRoutes = (prop) => [
 
 const configChildRoute = (prop) => [
     {
-        path: 'role',
+        path: '/role',
         name: prop + '.role',
         meta: {auth: true, name: 'Roles'},
         component: RoleApp
     },
 ]
+
+const comunicationChildRoute = (prop) => [
+    {
+        path: 'categories',
+        name: prop + '.categories',
+        meta: {auth: true, name: 'Categorías'},
+        component: CategoryApp
+    },
+]
+
+
+//*-------------------------------//
+//-----------RUTAS GENERALES      //
+//-------------------------------//
 
 const routes = [
     {
@@ -249,6 +271,13 @@ const routes = [
         meta: {auth: true},
         children: configChildRoute('config')
     },
+    {
+        path: '/comunication',
+        name: 'comunication',
+        component: VerticleLayout,
+        meta: {auth: true},
+        children: comunicationChildRoute('comunication')
+    },
 
     {
         path: '/callback',
@@ -277,10 +306,6 @@ router.beforeEach((to, from, next) => {
     store.commit('CLEAR_ERRORS');
 
     const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
-    // if (publicPages.includes(to.path)) {
-    //     localStorage.removeItem('user')
-    //     localStorage.removeItem('access_token')
-    // }
     const authRequired = !publicPages.includes(to.path)
     const loggedIn = store.state.Auth.user
 

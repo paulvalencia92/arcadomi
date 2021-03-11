@@ -2,11 +2,11 @@
   <b-container fluid>
     <iq-card>
       <template v-slot:headerTitle>
-        Lista de roles y habilidades
+        <i class="ri-user-settings-line mr-2 text-success"></i> Lista de roles y habilidades
       </template>
       <template v-slot:headerAction>
-        <b-button variant=" iq-bg-primary iq-waves-effect" v-b-modal.form-create-role size="lg">
-          Crear rol
+        <b-button variant="primary" v-b-modal.form-create-role>
+          Crear categoría
         </b-button>
       </template>
     </iq-card>
@@ -20,9 +20,9 @@
             </template>
           </template>
           <template v-slot:cell(actions)="roles">
-            <b-button size="sm" variant="primary" @click="showModalEditRole(roles.item)">
-              Editar
-            </b-button>
+            <b-dropdown variant="primary" id="accion-unit" text="Acciones" class="m-md-2">
+              <b-dropdown-item variant="primary" @click="showModalEditRole(roles.item)"><i class="ri-edit-box-line"/>Editar</b-dropdown-item>
+            </b-dropdown>
           </template>
         </b-table>
 

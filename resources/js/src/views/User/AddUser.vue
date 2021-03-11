@@ -237,7 +237,7 @@ export default {
     onSubmit() {
       const formData = this.buildFormData();
       this.createUser(formData).then(response => {
-        core.showSnackbar("success", "User has been updated successfully.");
+        core.showSnackbar("success", "El usuario ha sido creado con éxito.");
         this.$router.replace("/user/user-list");
       })
     },

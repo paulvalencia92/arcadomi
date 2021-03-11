@@ -112,6 +112,40 @@
     ]
   },
   {
+    "title": "Comunication",
+    "name": "comunication.title",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-profile-line",
+    "children": [
+      {
+        "title": "Advertisements",
+        "name": "comunication.advertisements.title",
+        "is_active": false,
+        "link": {
+          "name": "comunication.advertisements"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-article-line"
+      },
+      {
+        "title": "Advertisement Category",
+        "name": "comunication.advertisement_categories.title",
+        "is_active": false,
+        "link": {
+          "name": "comunication.categories"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-pantone-line"
+      }
+    ]
+  },
+  {
     "title": "Config",
     "name": "settings.title",
     "is_heading": false,

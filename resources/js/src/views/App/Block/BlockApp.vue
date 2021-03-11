@@ -6,7 +6,7 @@
           <template v-slot:body>
             <div class="d-flex justify-content-between align-items-center">
               <div class="todo-date d-flex mr-3">
-                <i :class="`ri-calendar-2-line text-success mr-2`"></i>
+                <i :class="`ri-government-line text-success mr-2`"></i>
                 <span>{{ $t('block.title') }}</span>
               </div>
               <div class="todo-notification d-flex align-items-center">

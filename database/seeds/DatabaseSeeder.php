@@ -13,7 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->truncate();
         Artisan::call('passport:install --force');
-        $this->call([BouncerSeeder::class, UserSeeder::class, TypeUnitSeeder::class]);
+        $this->call([
+            BouncerSeeder::class,
+            UserSeeder::class,
+            TypeUnitSeeder::class,
+            AdvertisementCategorySeeder::class
+        ]);
 
     }
 
@@ -21,6 +26,9 @@ class DatabaseSeeder extends Seeder
     public function truncate()
     {
         $this->truncateTables([
+            'advertisement_categories',
+            'advertisements',
+            'blocks',
             'bouncer_abilities',
             'bouncer_assigned_roles',
             'bouncer_permissions',
@@ -32,9 +40,10 @@ class DatabaseSeeder extends Seeder
             'oauth_personal_access_clients',
             'oauth_refresh_tokens',
             'password_resets',
+            'type_units',
+            'unit_user',
+            'units',
             'users',
-            'blocks',
-            'type_units'
         ]);
     }
 

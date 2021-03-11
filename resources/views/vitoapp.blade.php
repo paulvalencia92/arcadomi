@@ -10,19 +10,19 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <!-- Styles -->
     {{--<link rel="stylesheet" href="{{ asset(mix('css/main.css')) }}">--}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 </head>
 <body>
-    <noscript>
-        <strong>
-            We're sorry but {{ env('APP_DESCRIPTION') }} doesn't work properly without JavaScript enabled.
-            Please enable it to continue.
-        </strong>
-    </noscript>
-    <div id="app">
+<noscript>
+    <strong>
+        We're sorry but {{ env('APP_DESCRIPTION') }} doesn't work properly without JavaScript enabled.
+        Please enable it to continue.
+    </strong>
+</noscript>
+<div id="app">
+</div>
 
-    </div>
-
-    <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<script src='https://meet.jit.si/external_api.js'></script>
 </body>
 </html>

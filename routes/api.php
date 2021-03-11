@@ -34,13 +34,25 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/units/contact/{unit}', [UnitController::class, 'getUnitContacts']);
     Route::post('/units/contact', [UnitController::class, 'createContact']);
 
+
+    /**=================================
+     *    Roles
+     *================================**/
+    Route::apiResource('/roles', 'RoleController');
+    Route::get('/roles-abilities', [RoleController::class, 'getAbilities']);
+
+    /**=================================
+     *   Categorias Anuncios
+     *================================**/
+    Route::apiResource('/advertisement-categories', 'AdvertisementCategoryController');
+
+
     /**=================================
      *    Auth
      *================================**/
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::apiResource('/roles', 'RoleController');
-    Route::get('/roles-abilities', [RoleController::class, 'getAbilities']);
+
 
 });
 

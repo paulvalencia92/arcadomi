@@ -183,5 +183,14 @@
   },
   "settings": {
     "title": "Settings"
+  },
+  "comunication": {
+    "title": "Comumnication",
+    "advertisements": {
+      "title": "Advertisements"
+    },
+    "advertisement_categories": {
+      "title": "Categories"
+    }
   }
 }
