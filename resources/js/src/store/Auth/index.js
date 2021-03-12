@@ -1,17 +1,18 @@
 import axios from "axios";
-import store from "../index";
 
 export default {
     namespaced: true,
     state: {
         access_token: null,
         user: null,
+        abilities: [],
     },
     getters: {},
     mutations: {
         SET_USER_DATA(state, data) {
             state.access_token = data.access_token;
             state.user = data.user;
+            state.abilities = data.abilities;
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + data.access_token;
         },
         CLEAR_USER_DATA(state, data) {
@@ -33,8 +34,8 @@ export default {
                     this.$refs.form.setErrors(response.data.errors);
                 }
             }).finally(() => {
-                    this.loading = false;
-                });
+                this.loading = false;
+            });
         },
         async logout(context) {
             const response = await axios.post('/api/logout');

@@ -24,13 +24,13 @@ class AuthController extends Controller
             $user = request()->user();
 
 //            $role = $user->roles->pluck('name')->first();
-//            $abilities = $user->getAbilities()->pluck('name')->push('404')->push('403')->push('500')->push('dashboard');
+            $abilities = $user->getAbilities()->pluck('name')->push('404')->push('403')->push('500')->push('dashboard');
             $token = $user->createToken('Personal Access Client');
 
             return response()->json([
                 'user' => $user,
 //                'role' => $role,
-//                'abilities' => $abilities,
+                'abilities' => $abilities,
                 'access_token' => $token->accessToken,
             ]);
 

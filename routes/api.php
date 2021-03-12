@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth:api'], function () {
      *   Anuncios
      *================================**/
     Route::apiResource('/advertisements', 'AdvertisementController');
+    Route::get('/advertisements-published', [AdvertisementController::class, 'getPublished']);
     Route::patch('/advertisements-toggle-status/{advertisement}', [AdvertisementController::class, 'toggleStatus']);
 
 

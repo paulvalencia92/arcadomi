@@ -48,6 +48,7 @@ const RoleApp = () => import(/* webpackChunkName:"role-app"*/ "../views/Config/R
 const CategoryApp = () => import(/* webpackChunkName:"advertisement-category-app"*/ "../views/Comunication/AdvertisementCategory/CategoryApp");
 const AdvertisementApp = () => import(/* webpackChunkName:"advertisement-app"*/ "../views/Comunication/Advertisement/AdvertisementApp");
 const CreateAdvertisement = () => import(/* webpackChunkName:"advertisement-app"*/ "../views/Comunication/Advertisement/CreateAdvertisement");
+const DetailAdvertisement = () => import(/* webpackChunkName:"advertisement-detail"*/ "../views/Comunication/Advertisement/DetailAdvertisement");
 
 Vue.use(VueRouter)
 
@@ -214,6 +215,13 @@ const comunicationChildRoute = (prop) => [
         name: prop + '.create-advertisement',
         meta: {auth: true, name: 'Crear anuncio'},
         component: CreateAdvertisement,
+    },
+    {
+        path: 'anuncios/:id/detalle',
+        name: prop + '.detail-advertisement',
+        meta: {auth: true, name: 'Detalle del anuncio'},
+        component: DetailAdvertisement,
+        props: true
     },
     {
         path: 'categorias',

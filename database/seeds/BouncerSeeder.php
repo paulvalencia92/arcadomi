@@ -54,6 +54,14 @@ class BouncerSeeder extends Seeder
 
     protected function createAbilities()
     {
+        Bouncer::ability()->create([
+            'name' => 'admin-advertisement',
+            'title' => 'Anuncios administración',
+        ]);
+        Bouncer::ability()->create([
+            'name' => 'read-advertisement',
+            'title' => 'Anuncios lectura',
+        ]);
 
     }
 }

@@ -28,6 +28,10 @@ export default {
             const response = await axios.get('/api/advertisements');
             context.commit('SET_ADVERTISEMENTS', response.data);
         },
+        async getPublishedAdvertisements(context) {
+            const response = await axios.get('/api/advertisements-published');
+            context.commit('SET_ADVERTISEMENTS', response.data);
+        },
         async createAdvertisement(context, advertisement) {
             const response = await axios.post('/api/advertisements', advertisement);
             if (response.data.errors) {
@@ -59,6 +63,10 @@ export default {
             context.commit('UPDATE_ADVERTISEMENT', response.data);
             return Promise.resolve(response.data.is_published);
         },
+        async findArvertisement(context, advertisementId) {
+            const advertisement = context.state.advertisements.find(item => item.id == advertisementId);
+            return Promise.resolve(advertisement);
+        }
 
     },
 };

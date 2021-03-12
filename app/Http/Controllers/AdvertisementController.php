@@ -15,6 +15,16 @@ class AdvertisementController extends Controller
         return response()->json($advertisements, 200);
     }
 
+    public function getPublished()
+    {
+        $advertisements = Advertisement::with('user', 'advertisement_category', 'comments')
+            ->whereIsPublished(true)
+            ->withCount('comments')
+            ->get();
+
+        return response()->json($advertisements, 200);
+    }
+
 
     public function store(AdvertisementRequest $request)
     {
