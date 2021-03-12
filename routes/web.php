@@ -14,17 +14,10 @@
 */
 
 
-use App\Models\Block;
-use App\Models\Unit;
-use Silber\Bouncer\Database\Ability;
-use Silber\Bouncer\Database\Role;
-
 Route::get('/tests', function () {
 
-    $abilities = Ability::orderBy('title', 'ASC')->get();
-    return response()->json($abilities, 200);
+    return \App\Models\Advertisement::all();
 });
-
 
 
 Route::get('/{any}', 'VitoController')->where('any', '.*');

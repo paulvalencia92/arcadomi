@@ -46,12 +46,16 @@ Route::group(['middleware' => 'auth:api'], function () {
      *================================**/
     Route::apiResource('/advertisement-categories', 'AdvertisementCategoryController');
 
+    /**=================================
+     *   Categorias Anuncios
+     *================================**/
+    Route::apiResource('/advertisements', 'AdvertisementController');
+
 
     /**=================================
      *    Auth
      *================================**/
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 
 });

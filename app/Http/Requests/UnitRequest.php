@@ -24,17 +24,6 @@ class UnitRequest extends FormRequest
      */
     public function rules()
     {
-        switch ($this->method) {
-            case 'POST':
-            {
-
-            }
-            case 'PUT':
-            {
-
-            }
-        }
-
 
         switch ($this->method()) {
             case 'POST':

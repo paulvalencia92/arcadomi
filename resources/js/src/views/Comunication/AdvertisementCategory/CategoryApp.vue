@@ -23,8 +23,8 @@
                                @click="showModalEditAdvertisementCategory(data.item)"><i class="ri-edit-box-line"/>
                 Editar
               </b-dropdown-item>
-              <b-dropdown-item variant="danger" @click="showModalDeleteAdvertisementCategory(data.item.id)"><i
-                  class="fa fa-trash"/> Eliminar
+              <b-dropdown-item variant="danger" @click="showModalDeleteAdvertisementCategory(data.item.id)">
+                <i class="fa fa-trash"/> Eliminar
               </b-dropdown-item>
             </b-dropdown>
           </template>
@@ -67,7 +67,7 @@ export default {
         file: '',
       },
       modalTitle: '',
-      imagePreview: require("../../../assets/images/user/user-11.png"),
+      imagePreview: require("../../../assets/images/page-img/37.png"),
       fields: [
         {key: "name", label: 'Nombre', sortable: true},
         {key: "permissions", label: 'Permisos', sortable: true},

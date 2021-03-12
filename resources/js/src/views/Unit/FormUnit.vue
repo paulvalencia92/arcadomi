@@ -1,6 +1,6 @@
 <template>
   <ValidationObserver v-slot="{ handleSubmit }">
-    <b-form @submit.prevent="handleSubmit(onSubmit)">
+    <b-form @submit.prevent="handleSubmit(addUnit)">
       <iq-card>
         <template v-slot:body>
           <b-row>
@@ -53,8 +53,6 @@
                   </b-form-select-option>
                 </template>
               </b-form-select>
-
-
             </b-form-group>
 
 
@@ -70,9 +68,10 @@
 </template>
 
 <script>
-import {mapGetters, mapState} from "vuex";
+import {mapActions, mapGetters, mapState} from "vuex";
 import 'vue-search-select/dist/VueSearchSelect.css'
 import {ModelSelect} from 'vue-search-select';
+import {core} from "../../config/pluginInit";
 
 export default {
   name: "FormUnit",
@@ -81,8 +80,12 @@ export default {
     'model-select': ModelSelect,
   },
   methods: {
-    onSubmit() {
-      this.$emit('save', this.unit);
+    ...mapActions('Unit', ['createUnit']),
+    addUnit() {
+      this.createUnit(this.unit).then(response => {
+        core.showSnackbar("success", "Unidad creada correctamente");
+        this.$router.push({name: 'unit.list'});
+      });
     }
   },
   computed: {

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Silber\Bouncer\BouncerFacade as Bouncer;
 
@@ -30,5 +31,8 @@ class AppServiceProvider extends ServiceProvider
             'roles' => 'bouncer_roles',
             'assigned_roles' => 'bouncer_assigned_roles'
         ]);
+
+        Carbon::setLocale('es');
+        setlocale(LC_TIME, 'es_CO');
     }
 }

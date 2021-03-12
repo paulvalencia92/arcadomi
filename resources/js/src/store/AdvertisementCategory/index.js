@@ -6,7 +6,13 @@ export default {
     state: {
         advertisementCategories: []
     },
-    getters: {},
+    getters: {
+        optionsCategories(state) {
+            return state.advertisementCategories.map(item => {
+                return {text: item.name, value: item.id}
+            })
+        }
+    },
     mutations: {
         SET_ADVERTISEMENT_CATEGORIES(state, advertisementCategories) {
             state.advertisementCategories = advertisementCategories;
@@ -50,7 +56,7 @@ export default {
             return Promise.resolve();
         },
         async deleteAdvertisementCategories(context, advertisementCategoryId) {
-            const response = await axios.delete(`/api/advertisement-categories/${advertisementCategoryId}`);
+            await axios.delete(`/api/advertisement-categories/${advertisementCategoryId}`);
             context.commit('DELETE_ADVERTISEMENT_CATEGORY', advertisementCategoryId);
             return Promise.resolve();
         },

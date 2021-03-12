@@ -11,6 +11,9 @@
       </template>
     </iq-card>
 
+    <!--============================
+            TABLE ROLES
+    ==============================-->
     <iq-card v-if="roles.length">
       <template v-slot:body>
         <b-table :fields="fields" :items="roles" hover responsive>
@@ -21,7 +24,8 @@
           </template>
           <template v-slot:cell(actions)="roles">
             <b-dropdown variant="primary" id="accion-unit" text="Acciones" class="m-md-2">
-              <b-dropdown-item variant="primary" @click="showModalEditRole(roles.item)"><i class="ri-edit-box-line"/>Editar</b-dropdown-item>
+              <b-dropdown-item variant="primary" @click="showModalEditRole(roles.item)"><i class="ri-edit-box-line"/>Editar
+              </b-dropdown-item>
             </b-dropdown>
           </template>
         </b-table>
@@ -32,10 +36,9 @@
         </b-modal>
 
         <form-create-role></form-create-role>
-
-
       </template>
     </iq-card>
+
   </b-container>
 </template>
 

@@ -10,6 +10,9 @@ export default {
   name: "DefaultApp",
   created() {
   },
+  data() {
+    return {}
+  },
   methods: {},
   computed: {},
   mounted() {

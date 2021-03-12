@@ -97,8 +97,8 @@
 
 
                     <b-form-group class="col-sm-6" label="Genero:" label-class="d-block">
-                      <ValidationProvider name="Numero de celular" rules="required" v-slot="{ errors }">
-                        <b-form-radio inline v-model="user.gender" value="male">Masculino</b-form-radio>
+                      <ValidationProvider name="Genero" rules="required" v-slot="{ errors }">
+                        <b-form-radio :class="(errors.length > 0 ? ' is-invalid' : '')" inline v-model="user.gender" value="male">Masculino</b-form-radio>
                         <b-form-radio inline v-model="user.gender" value="female">Femenino</b-form-radio>
                         <div class="invalid-feedback">
                           <span>{{ errors[0] }}</span>
@@ -238,7 +238,7 @@ export default {
       const formData = this.buildFormData();
       this.createUser(formData).then(response => {
         core.showSnackbar("success", "El usuario ha sido creado con éxito.");
-        this.$router.replace("/user/user-list");
+        this.$router.push({name: 'user.list'});
       })
     },
     previewImage: function (event) {

@@ -46,6 +46,8 @@ const RoleApp = () => import(/* webpackChunkName:"role-app"*/ "../views/Config/R
 
 /* Comunication View */
 const CategoryApp = () => import(/* webpackChunkName:"advertisement-category-app"*/ "../views/Comunication/AdvertisementCategory/CategoryApp");
+const AdvertisementApp = () => import(/* webpackChunkName:"advertisement-app"*/ "../views/Comunication/Advertisement/AdvertisementApp");
+const CreateAdvertisement = () => import(/* webpackChunkName:"advertisement-app"*/ "../views/Comunication/Advertisement/CreateAdvertisement");
 
 Vue.use(VueRouter)
 
@@ -122,26 +124,26 @@ const pagesChildRoutes = (prop) => [
 //-------------------------------//
 const userChildRoute = (prop) => [
     {
-        path: 'profile',
+        path: 'perfil',
         name: prop + '.profile',
         meta: {auth: true, name: 'Mi perfil'},
         component: Profile
     },
     {
-        path: 'profile-edit/:id',
+        path: 'editar-usuario/:id',
         name: prop + '.edit',
         meta: {auth: true, name: 'Edit Profile'},
         component: ProfileEdit,
         props: true
     },
     {
-        path: 'add-user',
+        path: 'crear-usuario',
         name: prop + '.add',
         meta: {auth: true, name: 'Crear usuario'},
         component: AddUser
     },
     {
-        path: 'user-list',
+        path: 'lista-de-usuarios',
         name: prop + '.list',
         meta: {auth: true, name: 'Lista de usuarios'},
         component: UserList
@@ -153,19 +155,19 @@ const userChildRoute = (prop) => [
 //-------------------------------//
 const unitChildRoute = (prop) => [
     {
-        path: 'add-unit',
+        path: 'crear-unidad',
         name: prop + '.add',
         meta: {auth: true, name: 'Crear Unidad'},
         component: AddUnit
     },
     {
-        path: 'list-unit',
+        path: 'lista-de-unidades',
         name: prop + '.list',
         meta: {auth: true, name: 'Lista de unidades'},
         component: ListUnit
     },
     {
-        path: ':id/configuration',
+        path: ':id/configuracion',
         name: prop + '.configuration',
         meta: {auth: true, name: 'Configuracion'},
         component: ConfigUnit,
@@ -180,7 +182,7 @@ const unitChildRoute = (prop) => [
 
 const arcadomiRoutes = (prop) => [
     {
-        path: '/block',
+        path: 'bloques',
         name: prop + '.block',
         meta: {auth: true, name: 'Lista de Bloques'},
         component: BlockApp
@@ -202,11 +204,24 @@ const configChildRoute = (prop) => [
 
 const comunicationChildRoute = (prop) => [
     {
-        path: 'categories',
+        path: 'anuncios',
+        name: prop + '.advertisements',
+        meta: {auth: true, name: 'Anuncios'},
+        component: AdvertisementApp,
+    },
+    {
+        path: 'crear-anuncio',
+        name: prop + '.create-advertisement',
+        meta: {auth: true, name: 'Crear anuncio'},
+        component: CreateAdvertisement,
+    },
+    {
+        path: 'categorias',
         name: prop + '.categories',
         meta: {auth: true, name: 'Categorías'},
         component: CategoryApp
     },
+
 ]
 
 
@@ -244,7 +259,7 @@ const routes = [
         children: defaultlayout('extra-pages')
     },
     {
-        path: '/user',
+        path: '/usuario',
         name: 'user',
         component: VerticleLayout,
         meta: {auth: true},
@@ -258,7 +273,7 @@ const routes = [
         children: arcadomiRoutes('app')
     },
     {
-        path: '/unit',
+        path: '/unidades',
         name: 'unit',
         component: VerticleLayout,
         meta: {auth: true},
@@ -272,7 +287,7 @@ const routes = [
         children: configChildRoute('config')
     },
     {
-        path: '/comunication',
+        path: '/comunicacion',
         name: 'comunication',
         component: VerticleLayout,
         meta: {auth: true},

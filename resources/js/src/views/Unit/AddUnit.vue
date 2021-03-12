@@ -2,8 +2,7 @@
   <b-container fluid>
     <b-row>
       <b-col md="8">
-        <form-unit :unit="unit" @save="addUnit">
-        </form-unit>
+        <form-unit :unit="unit"></form-unit>
       </b-col>
     </b-row>
   </b-container>
@@ -37,16 +36,10 @@ export default {
   },
   methods: {
     ...mapActions('TypeUnits', ['getTypeUnits']),
-    ...mapActions('Unit', ['createUnit']),
     ...mapActions('User', ['getUsers']),
     ...mapActions('Block', ['getBlocks']),
 
-    addUnit(unit) {
-      this.createUnit(unit).then(response => {
-        core.showSnackbar("success", "Unidad creada correctamente");
-        this.$router.replace("/unit/list-unit");
-      });
-    }
+
   },
   computed: {
     ...mapState(['errors']),

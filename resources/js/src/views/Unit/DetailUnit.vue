@@ -17,7 +17,7 @@
 
         <b-dropdown variant="primary" id="accion-unit" text="Acciones" class="m-md-2">
           <b-dropdown-item>Ver como unidad</b-dropdown-item>
-          <b-dropdown-item :to="`/unit/${unit.id}/configuration`">Configuración</b-dropdown-item>
+          <b-dropdown-item :to="`/unidades/${unit.id}/configuracion`">Configuración</b-dropdown-item>
         </b-dropdown>
 
       </template>

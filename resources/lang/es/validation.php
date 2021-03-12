@@ -191,8 +191,9 @@ return [
         'year' => 'año',
 
 
-        'profile_image' => 'Imagen de perfil',
-        'image_path' => 'Imagen',
+        'profile_image' => 'imagen de perfil',
+        'image_path' => 'imagen',
+        'number' => 'numero de unidad',
 
     ],
 ];

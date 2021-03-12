@@ -18,15 +18,19 @@ class CreateAdvertisementsTable extends Migration
             $table->foreignId('advertisement_category_id')
                 ->constrained()
                 ->cascadeOnDelete();
+
             $table->foreignId('user_id')
-                ->constrained();
-            $table->unsignedBigInteger('block_id')->nullable();
-            $table->foreign('block_id')->references('id')->on('blocks');
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->json('blocks_id')->nullable();
 
             $table->string('title');
             $table->date('publication_date')->nullable();
             $table->boolean('is_published')->default(true);
             $table->boolean('is_featured')->nullable();
+            $table->boolean('block_comments')->default(false);
+            $table->boolean('massive_mail')->default(false);
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

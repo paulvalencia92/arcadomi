@@ -364,7 +364,7 @@ export default {
       const formData = this.buildFormData();
       this.updateUser(formData).then(response => {
         core.showSnackbar("success", "User has been updated successfully.");
-        this.$router.replace("/user/user-list");
+        this.$router.push({name: 'user.list'});
       })
 
 

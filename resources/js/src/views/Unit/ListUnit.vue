@@ -11,7 +11,7 @@
               </div>
               <div class="todo-notification d-flex align-items-center">
                 <b-button variant="primary">
-                  <b-link to="/unit/add-unit" class="text-white">Crear unidad</b-link>
+                  <b-link :to="{name: 'unit.add'}" class="text-white">Crear unidad</b-link>
                 </b-button>
               </div>
             </div>
