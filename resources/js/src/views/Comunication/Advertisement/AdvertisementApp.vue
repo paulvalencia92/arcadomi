@@ -19,6 +19,16 @@
     <iq-card v-if="advertisements.length">
       <template v-slot:body>
         <b-table :fields="fields" :items="advertisements" responsive>
+
+          <template v-slot:cell(is_published)="data">
+            <div @click="changeStatus(data.item)">
+              <i v-if="data.item.is_published" class="ri-checkbox-circle-fill text-success ri-2x"
+                 style="cursor: pointer"></i>
+              <i v-else class="ri-checkbox-blank-circle-fill text-danger ri-2x" style="cursor: pointer"></i>
+            </div>
+
+          </template>
+
           <template v-slot:cell(created_at)="data">
             {{ data.item.created_at | formatDate }} <br>
             {{ data.item.created_at | formatDateToTime }}
@@ -79,7 +89,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('Advertisement', ['getAdvertisements', 'deleteAdvertisement']),
+    ...mapActions('Advertisement', ['getAdvertisements', 'deleteAdvertisement', 'toggleStatus']),
     showModalEditAdvertisement(item) {
       this.advertisementEdit = clone(item);
     },
@@ -97,6 +107,16 @@ export default {
             core.showSnackbar("success", "El anuncio ha sido eliminado con éxito.");
           })
         }
+      });
+    },
+    changeStatus(advertisement) {
+      this.toggleStatus(advertisement).then(response => {
+        if (response) {
+          core.showSnackbar("success", "El anuncio ha sido publicado con éxito.");
+        } else {
+          core.showSnackbar("success", "El anuncio ha sido ocultado.");
+        }
+
       });
     }
   },

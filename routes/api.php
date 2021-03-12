@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AuthController, RoleController, RolesController, UnitController};
+use App\Http\Controllers\{AdvertisementController, AuthController, RoleController, RolesController, UnitController};
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -47,9 +47,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('/advertisement-categories', 'AdvertisementCategoryController');
 
     /**=================================
-     *   Categorias Anuncios
+     *   Anuncios
      *================================**/
     Route::apiResource('/advertisements', 'AdvertisementController');
+    Route::patch('/advertisements-toggle-status/{advertisement}', [AdvertisementController::class, 'toggleStatus']);
 
 
     /**=================================

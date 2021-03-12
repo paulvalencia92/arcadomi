@@ -54,6 +54,14 @@ class AdvertisementController extends Controller
         return response()->json('Success deleted', 200);
     }
 
+    public function toggleStatus(Advertisement $advertisement)
+    {
+        $advertisement->is_published = !$advertisement->is_published;
+        $advertisement->save();
+        return response()->json($advertisement->load('user', 'advertisement_category'), 201);
+    }
+
+
     protected function advertisementInput(string $file = null): array
     {
         return [

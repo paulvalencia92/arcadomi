@@ -54,6 +54,11 @@ export default {
             context.commit('DELETE_ADVERTISEMENT', advertisementId);
             return Promise.resolve();
         },
+        async toggleStatus(context, advertisement) {
+            const response = await axios.patch(`/api/advertisements-toggle-status/${advertisement.id}`);
+            context.commit('UPDATE_ADVERTISEMENT', response.data);
+            return Promise.resolve(response.data.is_published);
+        },
 
     },
 };
