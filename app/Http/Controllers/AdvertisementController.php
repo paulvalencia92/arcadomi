@@ -5,20 +5,34 @@ namespace App\Http\Controllers;
 use App\Helpers\Uploader;
 use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
+use App\Models\Comment;
+use Illuminate\Http\Request;
 
 class AdvertisementController extends Controller
 {
 
+
     public function index()
     {
-        $advertisements = Advertisement::with('user', 'advertisement_category')->get();
+        $advertisements = Advertisement::with([
+            'user',
+            'advertisement_category',
+            'comments' => function ($query) {
+                $query->orderBy('created_at', 'desc')->with('user');
+            }
+        ])->get();
         return response()->json($advertisements, 200);
     }
 
     public function getPublished()
     {
-        $advertisements = Advertisement::with('user', 'advertisement_category', 'comments')
-            ->whereIsPublished(true)
+        $advertisements = Advertisement::with([
+            'user',
+            'advertisement_category',
+            'comments' => function ($query) {
+                $query->orderBy('created_at', 'desc')->with('user');
+            }
+        ])->whereIsPublished(true)
             ->withCount('comments')
             ->get();
 
@@ -69,6 +83,25 @@ class AdvertisementController extends Controller
         $advertisement->is_published = !$advertisement->is_published;
         $advertisement->save();
         return response()->json($advertisement->load('user', 'advertisement_category'), 201);
+    }
+
+    public function addComment(Request $request, Advertisement $advertisement)
+    {
+        $advertisement->comments()->create(['body' => $request->message]);
+        return response()->json($advertisement->load([
+            'user',
+            'advertisement_category',
+            'comments' => function ($query) {
+                $query->orderBy('created_at', 'desc')->with('user');
+            }
+        ]), 201);
+    }
+
+
+    public function deleteComment(Comment $comment)
+    {
+        $comment->delete();
+        return response()->json('Success deleted', 200);
     }
 
 

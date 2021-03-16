@@ -1,5 +1,6 @@
 <template>
   <b-container fluid>
+
     <b-col sm="12">
       <b-card
           :title="advertisement.title"
@@ -16,28 +17,34 @@
         </b-card-text>
       </b-card>
     </b-col>
+
+    <b-col md="12">
+      <comment-advertisement></comment-advertisement>
+    </b-col>
+
+
   </b-container>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapState} from "vuex";
 import {core} from "../../../config/pluginInit";
+import CommentAdvertisement from "./CommentAdvertisement";
 
 export default {
   name: "DetailAdvertisement",
   props: ['id'],
-  data() {
-    return {
-      advertisement: {}
-    }
+  components: {
+    'comment-advertisement': CommentAdvertisement
   },
   created() {
-    this.findArvertisement(this.id).then(response => {
-      this.advertisement = response;
-    });
+    this.findArvertisement(this.id);
   },
   methods: {
     ...mapActions('Advertisement', ['findArvertisement'])
+  },
+  computed: {
+    ...mapState('Advertisement', ['advertisement'])
   },
   mounted() {
     core.index();

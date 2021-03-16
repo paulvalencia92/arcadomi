@@ -51,7 +51,8 @@ Route::group(['middleware' => 'auth:api'], function () {
      *================================**/
     Route::apiResource('/advertisements', 'AdvertisementController');
     Route::get('/advertisements-published', [AdvertisementController::class, 'getPublished']);
-    Route::patch('/advertisements-toggle-status/{advertisement}', [AdvertisementController::class, 'toggleStatus']);
+    Route::post('/advertisements-comments/{advertisement}', [AdvertisementController::class, 'addComment']);
+    Route::delete('/advertisements-comments/{advertisement}', [AdvertisementController::class, 'deleteComment']);
 
 
     /**=================================

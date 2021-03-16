@@ -52,9 +52,9 @@
     </iq-card>
 
 
-    <!--============================
-         FORMULARIO CATEGORIA
-    ==============================-->
+    <!--===================================
+         MODAL FORMULARIO EDITAR CATEGORIA
+    =====================================-->
     <b-modal id="form-advertisement-category" centered size="xl" title="Editar anuncio" hide-footer>
       <form-advertisement :advertisement="advertisementEdit" :image="image"></form-advertisement>
     </b-modal>

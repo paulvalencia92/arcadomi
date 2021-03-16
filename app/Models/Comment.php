@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+        self::saving(function ($table) {
+            $table->user_id = auth()->id();
+        });
+    }
+
+
     public function commentable()
     {
         return $this->morphTo();

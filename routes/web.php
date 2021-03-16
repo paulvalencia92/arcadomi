@@ -31,10 +31,13 @@ use App\Models\Advertisement;
 
 Route::get('/tests', function () {
 
+    return $advertisements = Advertisement::with([
+        'user',
+        'advertisement_category',
 
-    return Advertisement::with('user', 'advertisement_category', 'comments')
-        ->withCount('comments')
+    ])
         ->whereIsPublished(true)
+        ->withCount('comments')
         ->get();
 });
 

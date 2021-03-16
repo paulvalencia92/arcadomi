@@ -5,6 +5,7 @@
     "/add-user.js": "/add-user.js",
     "/advertisement-app.js": "/advertisement-app.js",
     "/advertisement-category-app.js": "/advertisement-category-app.js",
+    "/advertisement-detail.js": "/advertisement-detail.js",
     "/config-unit.js": "/config-unit.js",
     "/edit-user.js": "/edit-user.js",
     "/list-block.js": "/list-block.js",
@@ -14,6 +15,5 @@
     "/vendors~canvg.js": "/vendors~canvg.js",
     "/vendors~pdfmake.js": "/vendors~pdfmake.js",
     "/vendors~xlsx.js": "/vendors~xlsx.js",
-    "/xlsx.js": "/xlsx.js",
-    "/advertisement-detail.js": "/advertisement-detail.js"
+    "/xlsx.js": "/xlsx.js"
 }

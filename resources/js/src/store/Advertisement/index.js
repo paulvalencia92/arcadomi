@@ -5,6 +5,7 @@ export default {
     namespaced: true,
     state: {
         advertisements: [],
+        advertisement: {}
     },
     getters: {},
     mutations: {
@@ -16,12 +17,20 @@ export default {
         },
         UPDATE_ADVERTISEMENT(state, advertisement) {
             const index = state.advertisements.findIndex(item => item.id == advertisement.id);
+            state.advertisement = advertisement;
             state.advertisements.splice(index, 1, advertisement);
         },
         DELETE_ADVERTISEMENT(state, advertisementId) {
             const index = state.advertisements.findIndex(item => item.id == advertisementId);
             state.advertisements.splice(index, 1);
         },
+        SET_ADVERTISEMENT(state, advertisement) {
+            state.advertisement = advertisement;
+        },
+        DELETE_COMMENT_ADVERTISEMENT(state, commentId) {
+            const index = state.advertisement.comments.findIndex(item => item.id == commentId);
+            state.advertisement.comments.splice(index, 1)
+        }
     },
     actions: {
         async getAdvertisements(context) {
@@ -65,7 +74,19 @@ export default {
         },
         async findArvertisement(context, advertisementId) {
             const advertisement = context.state.advertisements.find(item => item.id == advertisementId);
-            return Promise.resolve(advertisement);
+            context.commit('SET_ADVERTISEMENT', advertisement);
+        },
+        async createComment(context, payload) {
+            const response = await axios.post(`/api/advertisements-comments/${payload.advertisementId}`, {
+                message: payload.message
+            });
+            context.commit('UPDATE_ADVERTISEMENT', response.data);
+            return Promise.resolve();
+        },
+        async deleteCommentAdvertisement(context, commentId) {
+            await axios.delete(`/api/advertisements-comments/${commentId}`);
+            context.commit('DELETE_COMMENT_ADVERTISEMENT', commentId);
+            return Promise.resolve();
         }
 
     },
