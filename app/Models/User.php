@@ -26,7 +26,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['role', 'fullname'];
+    protected $appends = ['role', 'fullname', 'image_profile'];
 
 
     public function getRoleAttribute()
@@ -37,6 +37,15 @@ class User extends Authenticatable
     public function getFullnameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function getImageProfileAttribute()
+    {
+        $ruta = "/storage/users/user-default.jpg";
+        if ($this->image) {
+            $ruta = "/storage/users/{$this->image}";
+        }
+        return $ruta;
     }
 
     public function units()

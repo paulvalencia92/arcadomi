@@ -27,18 +27,9 @@
 */
 
 
-use App\Models\Advertisement;
-
 Route::get('/tests', function () {
 
-    return $advertisements = Advertisement::with([
-        'user',
-        'advertisement_category',
-
-    ])
-        ->whereIsPublished(true)
-        ->withCount('comments')
-        ->get();
+    return \App\Models\User::all();
 });
 
 

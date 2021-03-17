@@ -93,10 +93,10 @@
           <ul class="navbar-list">
             <li class="" v-nav-toggle>
               <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center bg-primary rounded">
-                <img :src="userProfile" class="img-fluid rounded mr-3" alt="user">
+                <img :src="user.image_profile" class="img-fluid rounded mr-3" alt="user">
                 <div class="caption" style="width: 96px;">
-                  <h6 class="mb-0 line-height text-white">Nik jon</h6>
-                  <span class="font-size-12 text-white">{{ $t('nav.user.available') }}</span>
+                  <h6 class="mb-0 line-height text-white">{{ user.first_name }}</h6>
+                  <span class="font-size-12 text-white">{{ user.role }}</span>
                 </div>
               </a>
               <div class="iq-sub-dropdown iq-user-dropdown">
@@ -181,7 +181,7 @@
 <script>
 import {core} from '../config/pluginInit'
 import {Users} from '../FackApi/api/chat'
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapGetters, mapState} from 'vuex'
 import Loader from '../components/core/loader/Loader'
 import Sidebar from '../components/core/sidebars/Sidebar'
 import DefaultNavBar from '../components/core/navbars/DefaultNavBar'
@@ -214,6 +214,7 @@ export default {
     this.layoutSetting(this.$route.name)
   },
   computed: {
+    ...mapState('Auth', ['user']),
     ...mapGetters({
       cartCount: 'Ecommerce/cartCountState',
       cartItems: 'Ecommerce/cartState',
@@ -304,7 +305,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('Auth',['logout']),
+    ...mapActions('Auth', ['logout']),
     layoutSetting(routeName) {
       this.modeChange({rtl: this.rtlMode, dark: this.darkMode})
       this.onlyLogo = true

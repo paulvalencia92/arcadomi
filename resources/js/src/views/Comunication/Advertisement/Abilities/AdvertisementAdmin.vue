@@ -40,7 +40,7 @@
               <b-dropdown-item variant="primary"
                                v-b-modal.form-advertisement-category
                                @click="showModalEditAdvertisement(data.item)">
-                <i class="ri-edit-box-line"/>Editar
+                <i class="ri-edit-box-line"/> Editar
               </b-dropdown-item>
               <b-dropdown-item variant="danger" @click="showModalDeleteAdvertisement(data.item.id)">
                 <i class="fa fa-trash"/> Eliminar
