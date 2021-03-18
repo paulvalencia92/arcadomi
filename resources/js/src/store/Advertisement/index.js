@@ -5,9 +5,18 @@ export default {
     namespaced: true,
     state: {
         advertisements: [],
-        advertisement: {}
+        advertisement: {},
+        filter: {}
     },
-    getters: {},
+    getters: {
+        filteredAdvertisements(state) {
+            let advertisements = state.advertisements;
+            if (state.filter) {
+                advertisements = advertisements.filter(item => item.advertisement_category_id == state.filter.id);
+            }
+            return advertisements;
+        }
+    },
     mutations: {
         SET_ADVERTISEMENTS(state, advertisements) {
             state.advertisements = advertisements;
@@ -30,7 +39,10 @@ export default {
         DELETE_COMMENT_ADVERTISEMENT(state, commentId) {
             const index = state.advertisement.comments.findIndex(item => item.id == commentId);
             state.advertisement.comments.splice(index, 1)
-        }
+        },
+        SET_FILTER(state, advertisementCategory) {
+            state.filter = advertisementCategory;
+        },
     },
     actions: {
         async getAdvertisements(context) {

@@ -2,7 +2,7 @@
   <b-card title="Comentarios">
     <b-row>
       <b-col md="2">
-        <img class="rounded-circle" src="../../../assets/images/user/user-01.jpg">
+        <img class="rounded-circle" width="60" height="60" :src="user.image_profile">
       </b-col>
       <b-col md="10">
         <div class="form-group">
@@ -23,7 +23,7 @@
       <b-col class="mt-4" md="12" v-for="comment in advertisement.comments" :key="comment.id">
         <b-row>
           <b-col md="2">
-            <img class="rounded-circle" src="../../../assets/images/user/user-01.jpg">
+            <img class="rounded-circle" width="60" height="60" :src="comment.user.image_profile">
           </b-col>
           <b-col md="10">
             <div class="media-support-info mt-2">
@@ -50,6 +50,7 @@
 <script>
 import {mapActions, mapState} from "vuex";
 import {core} from "../../../config/pluginInit";
+
 export default {
   name: "CommentAdvertisement",
   data() {

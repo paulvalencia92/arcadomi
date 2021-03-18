@@ -45,6 +45,12 @@
               <b-dropdown-item variant="danger" @click="showModalDeleteAdvertisement(data.item.id)">
                 <i class="fa fa-trash"/> Eliminar
               </b-dropdown-item>
+
+              <b-dropdown-item variant="primary"
+                               :to="{name: 'comunication.detail-advertisement',params: {id: data.item.id}}">
+                <i class="ri-eye-fill"/> Ver
+              </b-dropdown-item>
+
             </b-dropdown>
           </template>
         </b-table>
