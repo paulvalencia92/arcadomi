@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" mode="light">
+<html lang="es" dir="ltr" mode="light">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +8,18 @@
 
     <title>ArcaDomi</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}">
-    <!-- Styles -->
-    {{--<link rel="stylesheet" href="{{ asset(mix('css/main.css')) }}">--}}
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 </head>
 <body>
 <noscript>
     <strong>
-        We're sorry but {{ env('APP_DESCRIPTION') }} doesn't work properly without JavaScript enabled.
-        Please enable it to continue.
+        Disculpa, pero debes tener habilitado tu JavaScript para poder usar nuestra aplicación
     </strong>
 </noscript>
 <div id="app">
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
-<script src='https://meet.jit.si/external_api.js'></script>
 </body>
 </html>

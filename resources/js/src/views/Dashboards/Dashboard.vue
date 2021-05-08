@@ -4,7 +4,7 @@
       <b-col md="8">
         <iq-card>
           <template v-slot:body>
-            <AmChart element="home-chart-06" type="dashboard2" :height="350" />
+            <h3>Acá debe ir ua gráfica integrada para ver control del sistema</h3>
           </template>
         </iq-card>
       </b-col>
@@ -307,17 +307,17 @@
 </template>
 <script>
 import { core } from '../../config/pluginInit'
-import AmChart from '../../components/core/charts/AmChart'
+
 import { Arabic } from 'flatpickr/dist/l10n/ar'
 import { english } from 'flatpickr/dist/l10n/default'
 import { mapGetters } from 'vuex'
 import Swiper from '../../components/core/slider/Swiper'
 import SwiperNav from '../../components/core/slider/SwiperNav'
 import SwiperSlide from '../../components/core/slider/SwiperSlide'
-import Counter from '../../components/core/counter/Counter'
+import Counter from '../../components/core/Counter'
 export default {
-  name: 'Dashboard2',
-  components: { AmChart, Counter, Swiper, SwiperNav, SwiperSlide },
+  name: 'Dashboard',
+  components: { Counter, Swiper, SwiperNav, SwiperSlide },
   mounted () {
     core.index()
   },

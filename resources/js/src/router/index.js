@@ -10,30 +10,26 @@ const Default = () => import('../layouts/BlankLayout')
 const AuthLayout = () => import('../layouts/AuthLayouts/AuthLayout')
 
 /* Dashboards View */
-const Dashboard = () => import('../views/Dashboards/Dashboard.vue')
+const Dashboard = () => import(/* webpackChunkName:"dashboard"*/ '../views/Dashboards/Dashboard.vue')
 
 /* Authentic View */
-const SignIn1 = () => import('../views/AuthPages/Default/SignIn1')
-const SignUp1 = () => import('../views/AuthPages/Default/SignUp1')
-const RecoverPassword1 = () => import('../views/AuthPages/Default/RecoverPassword1')
-const LockScreen1 = () => import('../views/AuthPages/Default/LockScreen1')
-const ConfirmMail1 = () => import('../views/AuthPages/Default/ConfirmMail1')
-const Callback = () => import('../views/AuthPages/Default/Callback')
+import Login from "../views/Auth/Login";
+import RecoverPassword from "../views/Auth/RecoverPassword";
+const Callback = () => import(/* webpackChunkName:"callback"*/ '../views/Auth/Callback')
 
 /* Extra Pages */
 const ErrorPage = () => import('../views/Pages/ErrorPage')
 const Maintenance = () => import('../views/Pages/Maintenance')
 const BlankPage = () => import('../views/Pages/BlankPage')
 
-
 /* User View */
-const Profile = () => import('../views/User/Profile')
+const Profile = () => import(/* webpackChunkName:"profile"*/ '../views/User/Profile')
 const ProfileEdit = () => import(/* webpackChunkName:"edit-user"*/ '../views/User/ProfileEdit')
 const AddUser = () => import(/* webpackChunkName:"add-user"*/ '../views/User/AddUser')
-const UserList = () => import('../views/User/UserList')
+const UserList = () => import(/* webpackChunkName:"list-users"*/ '../views/User/UserList')
 
 /*Block View */
-const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/App/Block/BlockApp')
+const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/Block/BlockApp')
 
 /* Unit View */
 const AddUnit = () => import(/* webpackChunkName:"add-unit"*/ '../views/Unit/AddUnit')
@@ -54,31 +50,100 @@ Vue.use(VueRouter)
 
 const childRoutes = (prop) => [
     {
-        path: 'home',
+        path: '/',
         name: prop + '.home',
         meta: {auth: true, name: 'Home'},
         component: Dashboard
+    },
+    {
+        path: '/perfil',
+        name: 'show.profile',
+        meta: {auth: true, name: 'Mi perfil'},
+        component: Profile
+    },
+    {
+        path: '/usuarios',
+        name: 'list.users',
+        meta: {auth: true, name: 'Lista de usuarios'},
+        component: UserList
+    },
+    {
+        path: '/usuarios/:id/editar',
+        name: 'edit.users',
+        meta: {auth: true, name: 'Editar perfil'},
+        component: ProfileEdit,
+        props: true
+    },
+    {
+        path: '/usuarios/crear',
+        name: 'add.users',
+        meta: {auth: true, name: 'Crear usuario'},
+        component: AddUser
+    },
+    {
+        path: '/bloques',
+        name: 'list.blocks',
+        meta: {auth: true, name: 'Lista de Bloques'},
+        component: BlockApp
+    },
+    {
+        path: '/unidades',
+        name: 'list.units',
+        meta: {auth: true, name: 'Lista de unidades'},
+        component: ListUnit
+    },
+    {
+        path: '/unidades/crear',
+        name: 'add.units',
+        meta: {auth: true, name: 'Crear Unidad'},
+        component: AddUnit
+    },
+    {
+        path: '/unidades/:id/configuracion',
+        name: 'config.units',
+        meta: {auth: true, name: 'Configuracion'},
+        component: ConfigUnit,
+        props: true
+    },
+    {
+        path: '/anuncios',
+        name: 'list.advertisements',
+        meta: {auth: true, name: 'Anuncios'},
+        component: AdvertisementApp,
+    },
+    {
+        path: '/anuncios/crear',
+        name: 'add.advertisements',
+        meta: {auth: true, name: 'Crear anuncio'},
+        component: CreateAdvertisement,
+    },
+    {
+        path: '/anuncios/:id/detalle',
+        name: 'detail.advertisements',
+        meta: {auth: true, name: 'Detalle del anuncio'},
+        component: DetailAdvertisement,
+        props: true
+    },
+    {
+        path: '/anuncios/categorias',
+        name: 'categories.advertisements',
+        meta: {auth: true, name: 'Categorías'},
+        component: CategoryApp
     },
 ]
 
 const authChildRoutes = (prop) => [
     {
-        path: 'sign-in1',
-        name: prop + '.sign-in1',
+        path: 'login',
+        name: prop + '.login',
         meta: {auth: false},
-        component: SignIn1
+        component: Login
     },
     {
-        path: 'sign-up1',
-        name: prop + '.sign-up1',
-        meta: {auth: true},
-        component: SignUp1
-    },
-    {
-        path: 'password-reset1',
-        name: prop + '.password-reset1',
+        path: 'password-reset',
+        name: prop + '.password-reset',
         meta: {auth: false},
-        component: RecoverPassword1
+        component: RecoverPassword
     },
 //     {
 //         path: 'lock-screen1',
@@ -120,75 +185,6 @@ const pagesChildRoutes = (prop) => [
 ]
 
 
-//*-------------------------------//
-//--- USUARIOS                   //
-//-------------------------------//
-const userChildRoute = (prop) => [
-    {
-        path: 'perfil',
-        name: prop + '.profile',
-        meta: {auth: true, name: 'Mi perfil'},
-        component: Profile
-    },
-    {
-        path: 'editar-usuario/:id',
-        name: prop + '.edit',
-        meta: {auth: true, name: 'Edit Profile'},
-        component: ProfileEdit,
-        props: true
-    },
-    {
-        path: 'crear-usuario',
-        name: prop + '.add',
-        meta: {auth: true, name: 'Crear usuario'},
-        component: AddUser
-    },
-    {
-        path: 'lista-de-usuarios',
-        name: prop + '.list',
-        meta: {auth: true, name: 'Lista de usuarios'},
-        component: UserList
-    }
-]
-
-//*-------------------------------//
-//          UNIDADES             //
-//-------------------------------//
-const unitChildRoute = (prop) => [
-    {
-        path: 'crear-unidad',
-        name: prop + '.add',
-        meta: {auth: true, name: 'Crear Unidad'},
-        component: AddUnit
-    },
-    {
-        path: 'lista-de-unidades',
-        name: prop + '.list',
-        meta: {auth: true, name: 'Lista de unidades'},
-        component: ListUnit
-    },
-    {
-        path: ':id/configuracion',
-        name: prop + '.configuration',
-        meta: {auth: true, name: 'Configuracion'},
-        component: ConfigUnit,
-        props: true
-    },
-]
-
-
-//*-------------------------------//
-//------ Rutas APP               //
-//-------------------------------//
-
-const arcadomiRoutes = (prop) => [
-    {
-        path: 'bloques',
-        name: prop + '.block',
-        meta: {auth: true, name: 'Lista de Bloques'},
-        component: BlockApp
-    },
-]
 
 //*-------------------------------//
 //-----Config child routes        //
@@ -201,35 +197,6 @@ const configChildRoute = (prop) => [
         meta: {auth: true, name: 'Roles'},
         component: RoleApp
     },
-]
-
-const comunicationChildRoute = (prop) => [
-    {
-        path: 'anuncios',
-        name: prop + '.advertisements',
-        meta: {auth: true, name: 'Anuncios'},
-        component: AdvertisementApp,
-    },
-    {
-        path: 'crear-anuncio',
-        name: prop + '.create-advertisement',
-        meta: {auth: true, name: 'Crear anuncio'},
-        component: CreateAdvertisement,
-    },
-    {
-        path: 'anuncios/:id/detalle',
-        name: prop + '.detail-advertisement',
-        meta: {auth: true, name: 'Detalle del anuncio'},
-        component: DetailAdvertisement,
-        props: true
-    },
-    {
-        path: 'categorias',
-        name: prop + '.categories',
-        meta: {auth: true, name: 'Categorías'},
-        component: CategoryApp
-    },
-
 ]
 
 
@@ -246,11 +213,11 @@ const routes = [
         children: childRoutes('dashboard')
     },
     {
-        path: '/auth',
-        name: 'auth1',
+        path: '/',
+        name: 'auth',
         component: AuthLayout,
         meta: {auth: true},
-        children: authChildRoutes('auth1')
+        children: authChildRoutes('auth')
     },
     {
         path: '/pages',
@@ -267,41 +234,12 @@ const routes = [
         children: defaultlayout('extra-pages')
     },
     {
-        path: '/usuario',
-        name: 'user',
-        component: VerticleLayout,
-        meta: {auth: true},
-        children: userChildRoute('user')
-    },
-    {
-        path: '/app',
-        name: 'app',
-        component: VerticleLayout,
-        meta: {auth: true},
-        children: arcadomiRoutes('app')
-    },
-    {
-        path: '/unidades',
-        name: 'unit',
-        component: VerticleLayout,
-        meta: {auth: true},
-        children: unitChildRoute('unit')
-    },
-    {
         path: '/config',
         name: 'config',
         component: VerticleLayout,
         meta: {auth: true},
         children: configChildRoute('config')
     },
-    {
-        path: '/comunicacion',
-        name: 'comunication',
-        component: VerticleLayout,
-        meta: {auth: true},
-        children: comunicationChildRoute('comunication')
-    },
-
     {
         path: '/callback',
         name: 'callback',
@@ -328,20 +266,20 @@ router.beforeEach((to, from, next) => {
 
     store.commit('CLEAR_ERRORS');
 
-    const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
+    const publicPages = ['/login', '/dark/login']
     const authRequired = !publicPages.includes(to.path)
     const loggedIn = store.state.Auth.user
 
 
     if (to.meta.auth) {
         if (authRequired && loggedIn === null) {
-            return next('/auth/sign-in1')
+            return next('/login')
         } else if (to.name === 'dashboard' || to.name === 'mini.dashboard') {
-            return next('/home')
+            return next('/')
         }
     } else {
         if (loggedIn) {
-            return next('/home')
+            return next('/')
         } else {
             next()
         }

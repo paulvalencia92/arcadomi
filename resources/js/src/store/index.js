@@ -7,13 +7,11 @@ import VuexPersistence from "vuex-persist";
 //-------------------------------//
 import Auth from './Auth/index';
 import Block from './Block/index';
-import Ecommerce from './Ecommerce/index';
+import TypeUnits from './TypeUnit/index';
+import Unit from './Unit';
 import Role from './Role/index';
 import Setting from './Setting/index'
 import User from './User/index';
-import TypeUnits from './TypeUnit/index';
-import Unit from './Unit';
-import VideoConference from './VideoConference';
 import AdvertisementCategory from './AdvertisementCategory';
 import Advertisement from './Advertisement';
 import axios from "axios";
@@ -21,7 +19,7 @@ import axios from "axios";
 
 const vuexLocal = new VuexPersistence({
     store: window.localStorage,
-    modules: ['Setting', 'Ecommerce', 'Auth', 'User', 'Role', 'Block', 'TypeUnits', 'Unit', 'VideoConference', 'AdvertisementCategory', 'Advertisement'],
+    modules: ['Setting', 'Auth', 'User', 'Role', 'Block', 'TypeUnits', 'Unit', 'AdvertisementCategory', 'Advertisement'],
 });
 
 
@@ -33,14 +31,12 @@ let store;
 export default store = new Vuex.Store({
     modules: {
         Setting,
-        Ecommerce,
         Auth,
         User,
         Role,
         Block,
         TypeUnits,
         Unit,
-        VideoConference,
         AdvertisementCategory,
         Advertisement
     },

@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[29],{1040:function(n,e,t){"use strict";t.r(e);var u=t(19),a={name:"BlankPage",mounted:function(){u.c.index()}},c=t(9),i=Object(c.a)(a,(function(){var n=this.$createElement;return(this._self._c||n)("div")}),[],!1,null,null,null);e.default=i.exports}}]);
+//# sourceMappingURL=29.d66ee3955195334b7dfe.js.map
