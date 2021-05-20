@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-import Loader from '../../components/core/loader/Loader'
+import Loader from '../../components/core/Loader'
 import logo from '../../assets/images/logo-white.png'
 import { core } from '../../config/pluginInit'
 import bgImage from '../../assets/images/login/login-2.jpg'

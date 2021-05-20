@@ -6,13 +6,13 @@
         <li class="list-inline-item"><a href="#">Terms of Use</a></li>
       </template>
       <template v-slot:right>
-        Copyright 2020 <a href="#">{{ appName }}</a> All Rights Reserved.
+        Copyright 2021 <a href="#">{{ appName }}</a> All Rights Reserved.
       </template>
     </MiniFooter>
   </div>
 </template>
 <script>
-import MiniFooter from '../../components/core/footer/MiniFooter'
+import MiniFooter from '../../components/core/MiniFooter'
 import { APPNAME } from '../../config/pluginInit'
 export default {
   name: 'LayoutFooter',

@@ -6,7 +6,11 @@ import counterUp from 'counterup2'
 
 require('waypoints/lib/noframework.waypoints.min')
 
+<<<<<<< HEAD
 export const APPNAME = 'Arcadomi'
+=======
+export const APPNAME = 'ArcaDomi'
+>>>>>>> c691d8263a4006061c6c8676464ede87d5956fd6
 
 export const core = {
     index() {
@@ -60,10 +64,10 @@ export const core = {
     loaderInit() {
         const load = document.getElementById('loading')
         animation.fadeOut(load, {duration: 0})
-        animation.fadeOut(load, {duration: 1000})
+        animation.fadeOut(load, {duration: 50})
         setTimeout(() => {
             load.classList.add('d-none')
-        }, 1000)
+        }, 50)
     },
     activeRoute() {
         const obj = {
@@ -71,7 +75,7 @@ export const core = {
             breadCrumb: [
                 {
                     html: '<i class="ri-home-4-line mr-1 float-left"></i>Home',
-                    to: {name: 'dashboard.home-1'}
+                    to: {name: 'dashboard.home'}
                 },
                 {
                     text: Route.currentRoute.meta.name,

@@ -1,24 +1,20 @@
 <template>
   <b-container fluid>
     <b-row>
-      <b-col lg="12">
+      <b-col sm="12">
         <iq-card>
-          <template v-slot:body>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="todo-date d-flex mr-3">
-                <i :class="`ri-home-4-line text-success mr-2`"></i>
-                <span>{{ $t('units.title') }}</span>
-              </div>
-              <div class="todo-notification d-flex align-items-center">
-                <b-button variant="primary">
-                  <b-link :to="{name: 'unit.add'}" class="text-white">Crear unidad</b-link>
-                </b-button>
-              </div>
-            </div>
-          </template>
+          <div class="row">
+            <b-col md="10">
+              <BreadCrumb/>
+            </b-col>
+            <b-col md="2" class="d-flex align-items-center">
+              <b-button pill variant="primary" block class="mr-3">
+                <b-link :to="{name: 'unit.add'}" class="text-white">Crear unidad</b-link>
+              </b-button>
+            </b-col>
+          </div>
         </iq-card>
       </b-col>
-
 
       <b-col md="4" v-for="(item, index) in units" :key="index">
         <detail-unit :unit="item"></detail-unit>
@@ -33,7 +29,6 @@
 import {core} from "../../config/pluginInit";
 import {mapActions, mapState} from "vuex";
 import DetailUnit from "./DetailUnit";
-
 export default {
   name: "ListUnit",
   components: {

@@ -1,10 +1,8 @@
 <template>
   <div>
     <Loader/>
-    <Customizer @onLogo="changeLogo" @toggle="sidebarMini" @animationChange="routerAnimationChange"/>
     <div class="wrapper">
       <!-- Sidebar  -->
-      <SmallSidebar v-if="$route.name === 'dashboard.home-5'" :logo="SmallSidebarLogo" @toggle="sidebarMini"/>
       <Sidebar :items="verticalMenu" :logo="logo" :onlyLogo="onlyLogo" :onlyLogoText="onlyLogoText"
                @toggle="sidebarMini" :toggleButton="toggleSideIcon" :sidebarGroupTitle="sidebarGroupTitle"/>
       <!-- TOP Nav Bar -->
@@ -26,42 +24,8 @@
               </div>
             </li>
             <li class="nav-item" v-nav-toggle>
-              <a href="javascript:void(0)" class="iq-waves-effect" :class="cartCount > 0 ? 'search-toggle' : ''">
-                <i class="ri-shopping-cart-2-line"/>
-                <span class="menu-tag ml-2">{{ cartCount }}</span>
-              </a>
-              <div class="iq-sub-dropdown">
-                <div class="iq-card shadow-none m-0">
-                  <div class="iq-card-body p-0 ">
-                    <div class="bg-primary p-3">
-                      <h5 class="mb-0 text-white">{{ $t('nav.allCarts') }}</h5>
-                    </div>
-                    <div class="iq-sub-card" v-for="(item, index) in cartItems" :key="index">
-                      <div class="media align-items-center">
-                        <div class="w-20 text-center d-none justify-content-center d-md-block">
-                          <img :src="item.image" :alt="item.name" class="w-100 align-self-center mr-3"/>
-                        </div>
-                        <div class="media-body ml-3">
-                          <b-button variant=" iq-bg-danger mt-3" size="sm" class="float-right"
-                                    @click="removeToCart(item)">X
-                          </b-button>
-                          <h6 class="mb-0 ">{{ item.name.substring(0, 20) + '...' }}</h6>
-                          <p class="mb-0 font-size-12">{{ item.description.substring(0, 20) + '...' }}</p>
-                          <p class="mb-0"><b>$ {{ item.price }}</b></p>
-                        </div>
-                      </div>
-                    </div>
-                    <router-link :to="{ name: 'app.e-commerce.cart'}">
-                      <b-button variant=" iq-bg-primary" block><i class="fas fa-cart-plus"/>{{ $t('nav.viewCarts') }}
-                      </b-button>
-                    </router-link>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item" v-nav-toggle>
               <a href="#" class="search-toggle iq-waves-effect">
-                <lottie :option="require('../assets/images/small/lottie-bell')" id="lottie-beil"/>
+                <i class="fas fa-bell"/>
                 <span class="bg-danger dots"></span>
               </a>
               <div class="iq-sub-dropdown">
@@ -95,7 +59,7 @@
               <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center bg-primary rounded">
                 <img :src="user.image_profile" class="img-fluid rounded mr-3" alt="user">
                 <div class="caption" style="width: 96px;">
-                  <h6 class="mb-0 line-height text-white">{{ user.first_name }}</h6>
+                  <h6 class="mb-0 line-height text-white">{{ user.first_name + ' ' + user.last_name }}</h6>
                   <span class="font-size-12 text-white">{{ user.role }}</span>
                 </div>
               </a>
@@ -103,10 +67,9 @@
                 <div class="iq-card shadow-none m-0">
                   <div class="iq-card-body p-0 ">
                     <div class="bg-primary p-3">
-                      <h5 class="mb-0 text-white line-height">Hello Nik jone</h5>
-                      <span class="text-white font-size-12">{{ $t('nav.user.available') }}</span>
+                      <h5 class="mb-0 text-white line-height">Hola {{user.first_name}}</h5>
                     </div>
-                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
+                    <router-link :to="{name: 'show.profile'}" class="iq-sub-card iq-bg-primary-hover">
                       <div class="media align-items-center">
                         <div class="rounded iq-card-icon iq-bg-primary">
                           <i class="ri-file-user-line"></i>
@@ -116,37 +79,15 @@
                           <p class="mb-0 font-size-12">{{ $t('nav.user.profileSub') }}</p>
                         </div>
                       </div>
-                    </a>
-                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
+                    </router-link>
+                    <a href="#" class="iq-sub-card iq-bg-primary-hover" @click="themeMode(!dark)">
                       <div class="media align-items-center">
                         <div class="rounded iq-card-icon iq-bg-primary">
                           <i class="ri-profile-line"></i>
                         </div>
                         <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ $t('nav.user.profileEditTitle') }}</h6>
-                          <p class="mb-0 font-size-12">{{ $t('nav.user.profileEditSub') }}</p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
-                      <div class="media align-items-center">
-                        <div class="rounded iq-card-icon iq-bg-primary">
-                          <i class="ri-account-box-line"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ $t('nav.user.accountSettingTitle') }}</h6>
-                          <p class="mb-0 font-size-12">{{ $t('nav.user.accountSettingSub') }}</p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
-                      <div class="media align-items-center">
-                        <div class="rounded iq-card-icon iq-bg-primary">
-                          <i class="ri-lock-line"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ $t('nav.user.privacySettingTitle') }}</h6>
-                          <p class="mb-0 font-size-12">{{ $t('nav.user.privacySettingSub') }}</p>
+                          <h6 class="mb-0 ">{{ $t('nav.user.profileThemeTitle') }}</h6>
+                          <p class="mb-0 font-size-12">{{ $t('nav.user.profileThemeSub') }}</p>
                         </div>
                       </div>
                     </a>
@@ -163,9 +104,9 @@
       </DefaultNavBar>
       <!-- TOP Nav Bar END -->
       <div id="content-page" class="content-page">
-        <b-container fluid="" v-if="!notBookmarkRouts.includes($route.name)">
+        <b-container fluid="" >
           <b-row>
-            <BreadCrumb/>
+           
           </b-row>
         </b-container>
         <transition name="router-anim" :enter-active-class="`animated ${animated.enter}`" mode="out-in"
@@ -173,42 +114,30 @@
           <router-view/>
         </transition>
       </div>
-      <LayoutFixRightSide v-if="$route.name === 'dashboard.home-1' "/>
     </div>
     <LayoutFooter/>
   </div>
 </template>
 <script>
 import {core} from '../config/pluginInit'
-import {Users} from '../FackApi/api/chat'
 import {mapActions, mapGetters, mapState} from 'vuex'
-import Loader from '../components/core/loader/Loader'
-import Sidebar from '../components/core/sidebars/Sidebar'
-import DefaultNavBar from '../components/core/navbars/DefaultNavBar'
-import SideBarItems from '../FackApi/json/SideBar'
+import Loader from '../components/core/Loader'
+import Sidebar from '../components/core/Sidebar'
+import DefaultNavBar from '../components/core/DefaultNavBar'
+import SideBarItems from '../components/SideBar'
 import profile from '../assets/images/user/user-1.jpeg'
 import loader from '../assets/images/loader.gif'
 import darkLoader from '../assets/images/darkMode/dark-logo.gif'
-import Lottie from '../components/core/lottie/Lottie'
-import Customizer from './Components/Customizer'
-import LayoutFixRightSide from './Components/LayoutFixRightSide'
 import WhiteLogo from '../assets/images/logo-2.png'
-import SmallSidebar from '../components/core/sidebars/SmallSidebar'
-import BreadCrumb from '../components/core/breadcrumbs/BreadCrumb'
 import LayoutFooter from './Components/LayoutFooter'
 
 export default {
   name: 'VerticleLayout',
   components: {
     LayoutFooter,
-    LayoutFixRightSide,
-    Customizer,
-    Lottie,
     Loader,
     Sidebar,
-    DefaultNavBar,
-    SmallSidebar,
-    BreadCrumb
+    DefaultNavBar
   },
   mounted() {
     this.layoutSetting(this.$route.name)
@@ -245,6 +174,7 @@ export default {
   // sidebarTicket
   data() {
     return {
+      dark: false,
       animated: {enter: 'fadeInUp', exit: 'fadeOut'},
       verticalMenu: SideBarItems,
       userProfile: profile,
@@ -252,16 +182,8 @@ export default {
       onlyLogoText: false,
       sidebarGroupTitle: true,
       logo: loader,
-      usersList: Users,
       rtl: false,
       SmallSidebarLogo: WhiteLogo,
-      message: [
-        {image: require('../assets/images/user/user-01.jpg'), name: 'Nik Emma Watson', date: '13 jan'},
-        {image: require('../assets/images/user/user-02.jpg'), name: 'Greta Life', date: '14 Jun'},
-        {image: require('../assets/images/user/user-03.jpg'), name: 'Barb Ackue', date: '16 Aug'},
-        {image: require('../assets/images/user/user-04.jpg'), name: 'Anna Sthesia', date: '21 Sept'},
-        {image: require('../assets/images/user/user-05.jpg'), name: 'Bob Frapples', date: '29 Sept'}
-      ],
       notification: [
         {
           image: require('../assets/images/user/user-01.jpg'),
@@ -295,12 +217,12 @@ export default {
         }
       ],
       notBookmarkRouts: [
-        'dashboard.home-1',
-        'dashboard.home-2',
-        'dashboard.home-3',
-        'dashboard.home-4',
-        'dashboard.home-5',
-        'dashboard.home-6'
+        'dashboard.home',
+        'dashboard.home',
+        'dashboard.home',
+        'dashboard.home',
+        'dashboard.home',
+        'dashboard.home'
       ]
     }
   },
@@ -356,11 +278,20 @@ export default {
     routerAnimationChange(e) {
       this.animated = e
     },
+    themeMode(mode) {
+      this.dark = mode
+      this.modeChange({rtl: this.rtl, dark: mode})
+      if (mode) {
+        this.logo = darkLoader
+      } else {
+        this.logo = loader
+      }
+      this.$emit('onLogo', this.logo)
+    },
     ...mapActions({
       removeToCart: 'Ecommerce/removeToCartAction',
       langChangeState: 'Setting/setLangAction',
       rtlAdd: 'Setting/setRtlAction',
-      rtlRemove: 'Setting/removeRtlAction',
       modeChange: 'Setting/layoutModeAction'
     })
   }

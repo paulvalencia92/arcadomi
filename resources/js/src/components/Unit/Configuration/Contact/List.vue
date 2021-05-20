@@ -23,14 +23,7 @@
             <h4 class="card-title">Usuarios asociados a la unidad</h4>
           </template>
           <template v-slot:body>
-            <ag-grid-vue
-                id="ag-grid"
-                class="ag-theme-material border height-500"
-                :columnDefs="columnDefs"
-                :rowData="unitUsers"
-                :floatingFilter="true"
-                rowSelection="multiple">
-            </ag-grid-vue>
+            <b-table :items="unitUsers" hover></b-table>
           </template>
         </iq-card>
       </b-col>
@@ -50,16 +43,12 @@
 <script>
 import FormContact from './Form'
 import {mapActions, mapState} from "vuex";
-import "ag-grid-community/dist/styles/ag-grid.min.css";
-import "ag-grid-community/dist/styles/ag-theme-material.css";
-import {AgGridVue} from "ag-grid-vue";
 import ActionContact from "./Components/ActionContact";
 
 export default {
   name: "ListContactUnit",
   components: {
     'form_contact': FormContact,
-    AgGridVue,
     ActionContact
   },
   created() {

@@ -10,15 +10,7 @@
             <b-button variant="primary" :to="{ name: 'user.add' }">Add User</b-button>
           </template>
           <template v-slot:body>
-            <ag-grid-vue
-                id="ag-grid"
-                class="ag-theme-material border height-500"
-                :columnDefs="columnDefs"
-                :rowData="userList"
-                :floatingFilter="true"
-                :modules="modules"
-                rowSelection="multiple"
-            ></ag-grid-vue>
+            <b-table :items="userList" hover></b-table>
           </template>
         </iq-card>
       </b-col>
@@ -26,11 +18,7 @@
   </b-container>
 </template>
 <script>
-import "ag-grid-community/dist/styles/ag-grid.min.css";
-import "ag-grid-community/dist/styles/ag-theme-material.css";
-import {AllCommunityModules} from "@ag-grid-enterprise/all-modules";
 import {core} from "../../config/pluginInit";
-import {AgGridVue} from "ag-grid-vue";
 import ActionUser from "./Components/ActionUser";
 import {mapActions, mapState} from 'vuex';
 
@@ -45,12 +33,10 @@ export default {
   data() {
     return {
       columnDefs: null,
-      rowData: [],
-      modules: AllCommunityModules
+      rowData: []
     };
   },
   components: {
-    AgGridVue,
     ActionUser
   },
   beforeMount() {
