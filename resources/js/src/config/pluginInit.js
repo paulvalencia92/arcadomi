@@ -6,7 +6,7 @@ import counterUp from 'counterup2'
 
 require('waypoints/lib/noframework.waypoints.min')
 
-export const APPNAME = 'Vito'
+export const APPNAME = 'Arcadomi'
 
 export const core = {
     index() {

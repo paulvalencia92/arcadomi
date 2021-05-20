@@ -63,5 +63,14 @@ class BouncerSeeder extends Seeder
             'title' => 'Anuncios lectura',
         ]);
 
+        Bouncer::ability()->create([
+            'name' => 'admin-user',
+            'title' => 'Usuarios administración',
+        ]);
+        Bouncer::ability()->create([
+            'name' => 'read-user',
+            'title' => 'Usuarios lectura',
+        ]);
+
     }
 }

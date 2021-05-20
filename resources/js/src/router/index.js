@@ -127,26 +127,27 @@ const userChildRoute = (prop) => [
     {
         path: 'perfil',
         name: prop + '.profile',
-        meta: {auth: true, name: 'Mi perfil'},
+        meta: {auth: true, name: 'Mi perfil', abilitie: 'mi-profile'},
         component: Profile
     },
     {
         path: 'editar-usuario/:id',
         name: prop + '.edit',
-        meta: {auth: true, name: 'Edit Profile'},
+        meta: {auth: true, name: 'Edit Profile', abilitie: 'admin-user'},
         component: ProfileEdit,
         props: true
     },
     {
         path: 'crear-usuario',
         name: prop + '.add',
-        meta: {auth: true, name: 'Crear usuario'},
-        component: AddUser
+        meta: {auth: true, name: 'Crear usuario', abilitie: 'admin-user'},
+        component: AddUser,
+        alias: 'admin-user'
     },
     {
         path: 'lista-de-usuarios',
         name: prop + '.list',
-        meta: {auth: true, name: 'Lista de usuarios'},
+        meta: {auth: true, name: 'Lista de usuarios', abilitie: 'read-user'},
         component: UserList
     }
 ]
@@ -196,7 +197,7 @@ const arcadomiRoutes = (prop) => [
 
 const configChildRoute = (prop) => [
     {
-        path: '/role',
+        path: 'role',
         name: prop + '.role',
         meta: {auth: true, name: 'Roles'},
         component: RoleApp
@@ -270,7 +271,7 @@ const routes = [
         path: '/usuario',
         name: 'user',
         component: VerticleLayout,
-        meta: {auth: true},
+        meta: {auth: true, abilitie: 'read-user'},
         children: userChildRoute('user')
     },
     {
@@ -327,18 +328,31 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 
     store.commit('CLEAR_ERRORS');
-
     const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
     const authRequired = !publicPages.includes(to.path)
     const loggedIn = store.state.Auth.user
-
+    const abilities = store.state.Auth.abilities;
 
     if (to.meta.auth) {
+
         if (authRequired && loggedIn === null) {
             return next('/auth/sign-in1')
         } else if (to.name === 'dashboard' || to.name === 'mini.dashboard') {
             return next('/home')
         }
+        else {
+
+            if (abilities.includes('*')) {
+                next()
+            } else {
+                if (abilities.includes(to.name) || abilities.includes(to.meta.abilitie)) {
+                    next()
+                } else {
+                    return next('/pages/error/404')
+                }
+            }
+        }
+
     } else {
         if (loggedIn) {
             return next('/home')
@@ -346,7 +360,14 @@ router.beforeEach((to, from, next) => {
             next()
         }
     }
-    next()
+
+
+
+
+
+    next();
+
+
 })
 
 export default router
