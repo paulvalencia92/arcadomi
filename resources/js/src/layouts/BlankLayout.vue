@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import Loader from '../components/core/Loader'
+import Loader from '../components/core/loader/Loader'
 import { core } from '../config/pluginInit'
 export default {
   name: 'BlankLayout',

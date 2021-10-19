@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function getImageProfileAttribute()
     {
-        $ruta = "/storage/users/user-default.png";
+        $ruta = "/storage/users/user-default.jpg";
         if ($this->image) {
             $ruta = "/storage/users/{$this->image}";
         }

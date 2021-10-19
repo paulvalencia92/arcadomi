@@ -10,26 +10,30 @@ const Default = () => import('../layouts/BlankLayout')
 const AuthLayout = () => import('../layouts/AuthLayouts/AuthLayout')
 
 /* Dashboards View */
-const Dashboard = () => import(/* webpackChunkName:"dashboard"*/ '../views/Dashboards/Dashboard.vue')
+const Dashboard = () => import('../views/Dashboards/Dashboard.vue')
 
 /* Authentic View */
-import Login from "../views/Auth/Login";
-import RecoverPassword from "../views/Auth/RecoverPassword";
-const Callback = () => import(/* webpackChunkName:"callback"*/ '../views/Auth/Callback')
+const SignIn1 = () => import('../views/AuthPages/Default/SignIn1')
+const SignUp1 = () => import('../views/AuthPages/Default/SignUp1')
+const RecoverPassword1 = () => import('../views/AuthPages/Default/RecoverPassword1')
+const LockScreen1 = () => import('../views/AuthPages/Default/LockScreen1')
+const ConfirmMail1 = () => import('../views/AuthPages/Default/ConfirmMail1')
+const Callback = () => import('../views/AuthPages/Default/Callback')
 
 /* Extra Pages */
 const ErrorPage = () => import('../views/Pages/ErrorPage')
 const Maintenance = () => import('../views/Pages/Maintenance')
 const BlankPage = () => import('../views/Pages/BlankPage')
 
+
 /* User View */
-const Profile = () => import(/* webpackChunkName:"profile"*/ '../views/User/Profile')
+const Profile = () => import('../views/User/Profile')
 const ProfileEdit = () => import(/* webpackChunkName:"edit-user"*/ '../views/User/ProfileEdit')
 const AddUser = () => import(/* webpackChunkName:"add-user"*/ '../views/User/AddUser')
-const UserList = () => import(/* webpackChunkName:"list-users"*/ '../views/User/UserList')
+const UserList = () => import('../views/User/UserList')
 
 /*Block View */
-const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/Block/BlockApp')
+const BlockApp = () => import(/* webpackChunkName:"list-block"*/ '../views/App/Block/BlockApp')
 
 /* Unit View */
 const AddUnit = () => import(/* webpackChunkName:"add-unit"*/ '../views/Unit/AddUnit')
@@ -50,100 +54,31 @@ Vue.use(VueRouter)
 
 const childRoutes = (prop) => [
     {
-        path: '/',
+        path: 'home',
         name: prop + '.home',
         meta: {auth: true, name: 'Home'},
         component: Dashboard
-    },
-    {
-        path: '/perfil',
-        name: 'show.profile',
-        meta: {auth: true, name: 'Mi perfil'},
-        component: Profile
-    },
-    {
-        path: '/usuarios',
-        name: 'list.users',
-        meta: {auth: true, name: 'Lista de usuarios'},
-        component: UserList
-    },
-    {
-        path: '/usuarios/:id/editar',
-        name: 'edit.users',
-        meta: {auth: true, name: 'Editar perfil'},
-        component: ProfileEdit,
-        props: true
-    },
-    {
-        path: '/usuarios/crear',
-        name: 'add.users',
-        meta: {auth: true, name: 'Crear usuario'},
-        component: AddUser
-    },
-    {
-        path: '/bloques',
-        name: 'list.blocks',
-        meta: {auth: true, name: 'Lista de Bloques'},
-        component: BlockApp
-    },
-    {
-        path: '/unidades',
-        name: 'list.units',
-        meta: {auth: true, name: 'Lista de unidades'},
-        component: ListUnit
-    },
-    {
-        path: '/unidades/crear',
-        name: 'add.units',
-        meta: {auth: true, name: 'Crear Unidad'},
-        component: AddUnit
-    },
-    {
-        path: '/unidades/:id/configuracion',
-        name: 'config.units',
-        meta: {auth: true, name: 'Configuracion'},
-        component: ConfigUnit,
-        props: true
-    },
-    {
-        path: '/anuncios',
-        name: 'list.advertisements',
-        meta: {auth: true, name: 'Anuncios'},
-        component: AdvertisementApp,
-    },
-    {
-        path: '/anuncios/crear',
-        name: 'add.advertisements',
-        meta: {auth: true, name: 'Crear anuncio'},
-        component: CreateAdvertisement,
-    },
-    {
-        path: '/anuncios/:id/detalle',
-        name: 'detail.advertisements',
-        meta: {auth: true, name: 'Detalle del anuncio'},
-        component: DetailAdvertisement,
-        props: true
-    },
-    {
-        path: '/anuncios/categorias',
-        name: 'categories.advertisements',
-        meta: {auth: true, name: 'Categorías'},
-        component: CategoryApp
     },
 ]
 
 const authChildRoutes = (prop) => [
     {
-        path: 'login',
-        name: prop + '.login',
+        path: 'sign-in1',
+        name: prop + '.sign-in1',
         meta: {auth: false},
-        component: Login
+        component: SignIn1
     },
     {
-        path: 'password-reset',
-        name: prop + '.password-reset',
+        path: 'sign-up1',
+        name: prop + '.sign-up1',
+        meta: {auth: true},
+        component: SignUp1
+    },
+    {
+        path: 'password-reset1',
+        name: prop + '.password-reset1',
         meta: {auth: false},
-        component: RecoverPassword
+        component: RecoverPassword1
     },
 //     {
 //         path: 'lock-screen1',
@@ -185,7 +120,6 @@ const pagesChildRoutes = (prop) => [
 ]
 
 
-<<<<<<< HEAD
 //*-------------------------------//
 //--- USUARIOS                   //
 //-------------------------------//
@@ -193,27 +127,26 @@ const userChildRoute = (prop) => [
     {
         path: 'perfil',
         name: prop + '.profile',
-        meta: {auth: true, name: 'Mi perfil', abilitie: 'mi-profile'},
+        meta: {auth: true, name: 'Mi perfil'},
         component: Profile
     },
     {
         path: 'editar-usuario/:id',
         name: prop + '.edit',
-        meta: {auth: true, name: 'Edit Profile', abilitie: 'admin-user'},
+        meta: {auth: true, name: 'Edit Profile'},
         component: ProfileEdit,
         props: true
     },
     {
         path: 'crear-usuario',
         name: prop + '.add',
-        meta: {auth: true, name: 'Crear usuario', abilitie: 'admin-user'},
-        component: AddUser,
-        alias: 'admin-user'
+        meta: {auth: true, name: 'Crear usuario'},
+        component: AddUser
     },
     {
         path: 'lista-de-usuarios',
         name: prop + '.list',
-        meta: {auth: true, name: 'Lista de usuarios', abilitie: 'read-user'},
+        meta: {auth: true, name: 'Lista de usuarios'},
         component: UserList
     }
 ]
@@ -256,8 +189,6 @@ const arcadomiRoutes = (prop) => [
         component: BlockApp
     },
 ]
-=======
->>>>>>> c691d8263a4006061c6c8676464ede87d5956fd6
 
 //*-------------------------------//
 //-----Config child routes        //
@@ -265,11 +196,40 @@ const arcadomiRoutes = (prop) => [
 
 const configChildRoute = (prop) => [
     {
-        path: 'role',
+        path: '/role',
         name: prop + '.role',
         meta: {auth: true, name: 'Roles'},
         component: RoleApp
     },
+]
+
+const comunicationChildRoute = (prop) => [
+    {
+        path: 'anuncios',
+        name: prop + '.advertisements',
+        meta: {auth: true, name: 'Anuncios'},
+        component: AdvertisementApp,
+    },
+    {
+        path: 'crear-anuncio',
+        name: prop + '.create-advertisement',
+        meta: {auth: true, name: 'Crear anuncio'},
+        component: CreateAdvertisement,
+    },
+    {
+        path: 'anuncios/:id/detalle',
+        name: prop + '.detail-advertisement',
+        meta: {auth: true, name: 'Detalle del anuncio'},
+        component: DetailAdvertisement,
+        props: true
+    },
+    {
+        path: 'categorias',
+        name: prop + '.categories',
+        meta: {auth: true, name: 'Categorías'},
+        component: CategoryApp
+    },
+
 ]
 
 
@@ -286,11 +246,11 @@ const routes = [
         children: childRoutes('dashboard')
     },
     {
-        path: '/',
-        name: 'auth',
+        path: '/auth',
+        name: 'auth1',
         component: AuthLayout,
         meta: {auth: true},
-        children: authChildRoutes('auth')
+        children: authChildRoutes('auth1')
     },
     {
         path: '/pages',
@@ -307,11 +267,10 @@ const routes = [
         children: defaultlayout('extra-pages')
     },
     {
-<<<<<<< HEAD
         path: '/usuario',
         name: 'user',
         component: VerticleLayout,
-        meta: {auth: true, abilitie: 'read-user'},
+        meta: {auth: true},
         children: userChildRoute('user')
     },
     {
@@ -329,14 +288,20 @@ const routes = [
         children: unitChildRoute('unit')
     },
     {
-=======
->>>>>>> c691d8263a4006061c6c8676464ede87d5956fd6
         path: '/config',
         name: 'config',
         component: VerticleLayout,
         meta: {auth: true},
         children: configChildRoute('config')
     },
+    {
+        path: '/comunicacion',
+        name: 'comunication',
+        component: VerticleLayout,
+        meta: {auth: true},
+        children: comunicationChildRoute('comunication')
+    },
+
     {
         path: '/callback',
         name: 'callback',
@@ -362,51 +327,26 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 
     store.commit('CLEAR_ERRORS');
-<<<<<<< HEAD
-    const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
-=======
 
-    const publicPages = ['/login', '/dark/login']
->>>>>>> c691d8263a4006061c6c8676464ede87d5956fd6
+    const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
     const authRequired = !publicPages.includes(to.path)
     const loggedIn = store.state.Auth.user
-    const abilities = store.state.Auth.abilities;
+
 
     if (to.meta.auth) {
-
         if (authRequired && loggedIn === null) {
-            return next('/login')
+            return next('/auth/sign-in1')
         } else if (to.name === 'dashboard' || to.name === 'mini.dashboard') {
-            return next('/')
+            return next('/home')
         }
-        else {
-
-            if (abilities.includes('*')) {
-                next()
-            } else {
-                if (abilities.includes(to.name) || abilities.includes(to.meta.abilitie)) {
-                    next()
-                } else {
-                    return next('/pages/error/404')
-                }
-            }
-        }
-
     } else {
         if (loggedIn) {
-            return next('/')
+            return next('/home')
         } else {
             next()
         }
     }
-
-
-
-
-
-    next();
-
-
+    next()
 })
 
 export default router

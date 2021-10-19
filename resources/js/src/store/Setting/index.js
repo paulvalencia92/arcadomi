@@ -1,6 +1,7 @@
 import getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
+import SideBarItems from '../../FackApi/json/GlobalSearch'
 
 const state = {
     horizontalMenu: false,
@@ -24,12 +25,56 @@ const state = {
         authType: false,
         user: {}
     },
+    // users: [
+    //   {
+    //     id: 'sh46s546sdg564sdffs4hsd6fh',
+    //     name: 'Admin Demo',
+    //     mobileNo: null,
+    //     email: 'admin@demo.com',
+    //     profileImage: null,
+    //     password: 'admin123'
+    //   }
+    // ],
+    globalSearch: SideBarItems,
+    bookmark: [
+        {
+            title: 'Video Chat',
+            link: {name: 'app.chat'},
+            is_icon_class: true,
+            icon: 'ri-message-line'
+        },
+        {
+            title: 'Product Listing',
+            link: {name: 'app.e-commerce.index'},
+            is_icon_class: true,
+            icon: 'ri-file-list-line'
+        },
+        {
+            title: 'Social App',
+            link: {name: 'social.list'},
+            is_icon_class: true,
+            icon: 'ri-question-answer-line'
+        },
+        {
+            title: 'Todo',
+            link: {name: 'app.todo'},
+            is_icon_class: true,
+            icon: 'ri-chat-check-line'
+        },
+        {
+            title: 'Inbox',
+            link: {name: 'app.email'},
+            is_icon_class: true,
+            icon: 'ri-inbox-line'
+        }
+
+    ],
     activePage: {
         name: 'Dashboard',
         breadCrumb: [
             {
-                html: '<i class="ri-home-4-line mr-1 float-left"></i>Inicio',
-                to: {name: 'dashboard.home'}
+                html: '<i class="ri-home-4-line mr-1 float-left"></i>Dashboard',
+                to: {name: 'dashboard.home-1'}
             },
             {
                 text: '',

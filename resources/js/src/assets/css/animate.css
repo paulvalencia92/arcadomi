@@ -1605,8 +1605,6 @@
 }
 
 .fadeInUp {
-  animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
@@ -1665,8 +1663,6 @@
 }
 
 .fadeOut {
-  animation-duration: 0.1s;
-  -webkit-animation-duration: 0.1s;
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
 }
@@ -3561,8 +3557,8 @@
 }
 
 .animated {
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }

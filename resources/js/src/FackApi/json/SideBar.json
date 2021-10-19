@@ -29,7 +29,6 @@
     "class_name": "",
     "is_icon_class": true,
     "icon": "ri-user-line",
-    "abilitie": "read-user",
     "children": [
       {
         "title": "User Profile",
@@ -40,8 +39,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-profile-line",
-        "abilitie": "mi-profile"
+        "icon": "ri-profile-line"
       },
       {
         "title": "User Add",
@@ -52,8 +50,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-user-add-line",
-        "abilitie": "admin-user"
+        "icon": "ri-user-add-line"
       },
       {
         "title": "User List",
@@ -64,8 +61,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-file-list-line",
-        "abilitie": "read-user"
+        "icon": "ri-file-list-line"
       }
     ]
   },
@@ -158,7 +154,6 @@
     "class_name": "",
     "is_icon_class": true,
     "icon": "ri-settings-5-line",
-    "abilitie": "configuration",
     "children": [
       {
         "title": "Roles",
